@@ -1,0 +1,16 @@
+.news {
+  margin-top: 50px;
+  border-radius: 10px;
+
+  &__title h4 {
+    margin: 0px 0px 16px 0px;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+}
+
+.content {
+  &__detail:hover {
+    color: #00a152;
+  }
+}
