@@ -1,0 +1,47 @@
+.appbar {
+  // position: fixed !important;
+  // width: 100% !important;
+  background-color: #fff !important;
+  padding: 0 !important;
+
+  &__toolbar {
+    min-height: 50px !important;
+  }
+
+  &__logo {
+    max-width: 100px;
+  }
+
+  &__title {
+    text-align: center;
+    flex-grow: 1;
+    color: #00524e !important;
+    font-weight: 600 !important;
+    font-family: "Muli", sans-serif !important;
+    font-size: 1.3rem !important;
+  }
+
+  &__button {
+    border-radius: 100rem;
+    padding: 6px 12px;
+    font-family: "Muli", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 0 6px 0 rgba(29, 4, 50, 0.5);
+    border: solid 2px transparent;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0)
+      ),
+      linear-gradient(45deg, #00524e, #e1b74c);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
+    cursor: pointer;
+    transition: 0.3s all;
+  }
+
+  &__button:hover {
+    box-shadow: none;
+  }
+}

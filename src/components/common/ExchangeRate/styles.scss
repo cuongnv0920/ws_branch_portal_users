@@ -1,0 +1,35 @@
+.exchangeRate {
+  &__title {
+    margin: 0;
+    padding: 8px 0px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+  }
+
+  &__notification {
+    margin: 0;
+    padding: 0px 0px 8px 0px;
+    text-align: center;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.8rem;
+  }
+}
+.head {
+  &__row {
+    padding: 8px 0px !important;
+  }
+  &__cell {
+    text-align: center !important;
+    font-weight: 600 !important;
+    font-family: "Muli", sans-serif !important;
+    font-size: small !important;
+  }
+}
+
+.body {
+  &__row:nth-of-type(odd) {
+    background-color: #ebedf0;
+  }
+}

@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { Divider, Grid, Paper } from "@mui/material";
+import { Box, Container } from "@mui/system";
+import { Route, Routes } from "react-router-dom";
+import { ExchangeRate, Header, MenuAppbar } from "./components/common";
+import Home from "./features/Home";
 
 function App() {
+  const routes = [
+    {
+      path: "/*",
+      element: <Home />,
+      role: "user",
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Divider />
+      <MenuAppbar />
+      <Box className="main">
+        <Container>
+          <Grid container spacing={2}>
+            <Grid item xs={7} md={7}>
+              <Routes>
+                {routes.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={route.element}
+                  />
+                ))}
+              </Routes>
+            </Grid>
+            <Grid item xs={5} md={5}>
+              <Paper>
+                <ExchangeRate />
+              </Paper>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
     </div>
   );
 }
