@@ -24,6 +24,7 @@ function Register(props) {
       if (closeDialog) {
         closeDialog();
       }
+      enqueueSnackbar("Đăng ký người dùng thành công.", { variant: "success" });
     } catch (error) {
       enqueueSnackbar(error.message, { variant: "error" });
     }

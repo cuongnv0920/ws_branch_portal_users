@@ -14,17 +14,17 @@ export const register = createAsyncThunk("user/create", async (payload) => {
   return data.user;
 });
 
-// export const login = createAsyncThunk("user/login", async (payload) => {
-//   // call API to login
-//   const data = await authApi.login(payload);
+export const login = createAsyncThunk("user/login", async (payload) => {
+  // call API to login
+  const data = await authApi.login(payload);
 
-//   // save data to local storage
-//   localStorage.setItem(StorageKeys.TOKEN, data.jwt);
-//   localStorage.setItem(StorageKeys.USER, JSON.stringify(data.user));
+  // save data to local storage
+  localStorage.setItem(StorageKeys.TOKEN, data.jwt);
+  localStorage.setItem(StorageKeys.USER, JSON.stringify(data.user));
 
-//   // return user data
-//   return data.user;
-// });
+  // return user data
+  return data.user;
+});
 
 // export const setting = createAsyncThunk("user/setting", async (payload) => {
 //   // call API to setting user
@@ -57,9 +57,9 @@ const userSlice = createSlice({
       state.current = action.payload;
     },
 
-    // [login.fulfilled]: (state, action) => {
-    //   state.current = action.payload;
-    // },
+    [login.fulfilled]: (state, action) => {
+      state.current = action.payload;
+    },
   },
 });
 

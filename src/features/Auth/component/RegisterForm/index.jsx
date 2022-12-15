@@ -29,7 +29,6 @@ function RegisterForm(props) {
   const [rooms, setRooms] = useState([]);
   const [levels, setLevels] = useState([]);
   const [sex, setSex] = useState("Mr");
-  const [role, setRole] = useState("user");
   const [birthday, setBirthday] = useState(new Date());
 
   const schema = yup.object().shape({
@@ -62,7 +61,6 @@ function RegisterForm(props) {
       phone: "",
       ext: "",
       sex: sex,
-      role: role,
       birthday: birthday,
     },
 
@@ -90,9 +88,6 @@ function RegisterForm(props) {
   };
   const handleChangeSex = (event) => {
     setSex(event.target.value);
-  };
-  const handleChangeRole = (event) => {
-    setRole(event.target.value);
   };
 
   const handleSubmit = async (values) => {
@@ -130,7 +125,7 @@ function RegisterForm(props) {
         <Input name="phone" label="Số điện thoại di động" form={form} />
         <Input name="ext" label="Số điện thoại nội bộ" form={form} />
         <Grid container spacing={2}>
-          <Grid item xs={6} md={6} sm={6}>
+          <Grid item xs={6} md={6} sm={6} sx={{ marginTop: "8px" }}>
             <RadioField
               name="sex"
               label="Giới tính"
@@ -143,30 +138,16 @@ function RegisterForm(props) {
             </RadioField>
           </Grid>
           <Grid item xs={6} md={6} sm={6}>
-            <RadioField
-              name="role"
-              label="Nhóm quyền"
-              onChange={handleChangeRole}
-              value={role}
+            <DateField
+              name="birthday"
+              lable="Ngày sinh nhật"
+              inputFormat="DD/MM/YYYY"
+              value={birthday}
+              onChange={handleChangeBirtday}
               form={form}
-            >
-              <FormControlLabel value="user" control={<Radio />} label="User" />
-              <FormControlLabel
-                value="admin"
-                control={<Radio />}
-                label="admin"
-              />
-            </RadioField>
+            />
           </Grid>
         </Grid>
-        <DateField
-          name="birthday"
-          lable="Ngày sinh nhật"
-          inputFormat="DD/MM/YYYY"
-          value={birthday}
-          onChange={handleChangeBirtday}
-          form={form}
-        />
 
         <Button
           className="dialogButtonSave"
@@ -174,7 +155,7 @@ function RegisterForm(props) {
           variant="contained"
           fullWidth
           size="large"
-          // disabled={isSubmitting}
+          disabled={isSubmitting}
         >
           Đăng ký
         </Button>
