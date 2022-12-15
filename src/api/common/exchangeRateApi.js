@@ -1,28 +1,23 @@
 import axiosClient from "../axios.Client";
 
-export const authApi = {
+export const exchangeRateApi = {
   create(data) {
-    const url = "/user/create";
+    const url = "/exchangeRate/create";
     return axiosClient.post(url, data);
   },
 
   list(data) {
-    const url = "/user/list";
+    const url = "/exchangeRate/list";
     return axiosClient.get(url, data);
   },
 
   update(data) {
-    const url = `/user/update/${data.id}`;
+    const url = `/exchangeRate/update/${data.id}`;
     return axiosClient.put(url, data);
   },
 
   delete(data) {
-    const url = `/user/delete/${data.id}`;
+    const url = `/exchangeRate/delete/${data.id}`;
     return axiosClient.put(url, data);
-  },
-
-  login(data) {
-    const url = "/user/login";
-    return axiosClient.post(url, data);
   },
 };

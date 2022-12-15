@@ -1,28 +1,23 @@
 import axiosClient from "../axios.Client";
 
-export const authApi = {
+export const marginApi = {
   create(data) {
-    const url = "/user/create";
+    const url = "/margin/create";
     return axiosClient.post(url, data);
   },
 
   list(data) {
-    const url = "/user/list";
+    const url = "/margin/list";
     return axiosClient.get(url, data);
   },
 
   update(data) {
-    const url = `/user/update/${data.id}`;
+    const url = `/margin/update/${data.id}`;
     return axiosClient.put(url, data);
   },
 
   delete(data) {
-    const url = `/user/delete/${data.id}`;
+    const url = `/margin/delete/${data.id}`;
     return axiosClient.put(url, data);
-  },
-
-  login(data) {
-    const url = "/user/login";
-    return axiosClient.post(url, data);
   },
 };

@@ -13,19 +13,13 @@ LoginForm.propTypes = {
 
 function LoginForm(props) {
   const schema = yup.object().shape({
-    email: yup
-      .string()
-      .required("Vui lòng nhập địa chỉ email người dùng.")
-      .email("Địa chỉ email không hợp lệ."),
-    password: yup
-      .string()
-      .required("Vui lòng nhập mật khẩu người dùng.")
-      .min(6, "Mật khẩu phải có ít nhất 6 ký tự."),
+    username: yup.string().required("Vui lòng nhập tên đăng nhập."),
+    password: yup.string().required("Vui lòng nhập mật khẩu người dùng."),
   });
 
   const form = useForm({
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
 
@@ -50,7 +44,7 @@ function LoginForm(props) {
       </div>
 
       <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <Input name="email" label="Tên đăng nhập" form={form} />
+        <Input name="username" label="Tên đăng nhập" form={form} />
         <Password name="password" label="Mật khẩu" form={form} />
 
         <Button
