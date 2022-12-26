@@ -1,0 +1,15 @@
+.skeleton {
+  margin-top: 50px;
+  border-radius: 10px;
+
+  &__title {
+    display: flex;
+  }
+
+  &__title h4 {
+    margin: 6px 0px;
+    flex-grow: 1;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+}

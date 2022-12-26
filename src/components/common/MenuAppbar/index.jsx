@@ -17,6 +17,7 @@ import InputBase from "@mui/material/InputBase";
 import React, { useEffect, useState } from "react";
 import "./styles.scss";
 import { categoryApi, linkApi } from "../../../api";
+import { useSelector } from "react-redux";
 
 MenuAppbar.propTypes = {};
 
@@ -67,6 +68,11 @@ export function MenuAppbar(props) {
   const [openLinkMenu, setOpenLinkMenu] = useState(null);
   const [categorys, setCategorys] = useState([]);
   const [links, setLinks] = useState([]);
+  const logged = useSelector((state) => state.auth.current);
+
+  const isLoggedAdmin = () => {
+    return logged.role === "admin";
+  };
 
   const handleOpenCategoryMenu = (event) => {
     setOpenCategoryMenu(event.currentTarget);
@@ -113,7 +119,7 @@ export function MenuAppbar(props) {
               aria-haspopup="true"
               className="menu__button"
               endIcon={<KeyboardArrowDownIcon />}
-              onMouseOver={handleOpenCategoryMenu}
+              onClick={handleOpenCategoryMenu}
             >
               Danh mục
             </Button>
@@ -143,7 +149,7 @@ export function MenuAppbar(props) {
               aria-haspopup="true"
               className="menu__button"
               endIcon={<KeyboardArrowDownIcon />}
-              onMouseOver={handleOpenLinkMenu}
+              onClick={handleOpenLinkMenu}
             >
               Liên kết
             </Button>
@@ -178,6 +184,21 @@ export function MenuAppbar(props) {
             <Button className="menu__button">
               <li href="/">Danh bạ</li>
             </Button>
+
+            {isLoggedAdmin() && (
+              <>
+                <Divider orientation="vertical" flexItem variant="middle" />
+                <Button className="menu__button">
+                  <a
+                    href="http://localhost:3001"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Quản trị
+                  </a>
+                </Button>
+              </>
+            )}
           </div>
           <Search>
             <SearchIconWrapper>

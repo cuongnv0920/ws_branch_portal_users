@@ -2,9 +2,9 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import ListPage from "./pages/ListPage";
 
-Home.propTypes = {};
+News.propTypes = {};
 
-function Home(props) {
+function News(props) {
   return (
     <Routes>
       <Route path="/*" element={<ListPage />} />
@@ -12,4 +12,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default News;
