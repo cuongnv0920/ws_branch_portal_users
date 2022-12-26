@@ -82,6 +82,7 @@ export function Header(props) {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenMenu}
+                title="User"
               >
                 <AccountCircle />
               </IconButton>
@@ -121,12 +122,12 @@ export function Header(props) {
               >
                 <MenuItem onClick={handleCloseMenu}>
                   <ListItemIcon>
-                    <Settings fontSize="small" />
+                    <Settings sx={{ color: "#00a152" }} fontSize="small" />
                   </ListItemIcon>
                   Cài đặt tài khoản
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>
-                  <ListItemIcon>
+                  <ListItemIcon sx={{ color: "#f50057" }}>
                     <Logout fontSize="small" />
                   </ListItemIcon>
                   Thoát

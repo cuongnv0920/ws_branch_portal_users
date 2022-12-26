@@ -115,6 +115,7 @@ input {
   font-family: "Muli", sans-serif !important;
   color: #1c2e36 !important;
 }
+
 h1,
 h2,
 h3 {
@@ -127,6 +128,7 @@ td {
   font-family: "Muli", sans-serif !important;
   color: #1c2e36 !important;
 }
+
 th {
   font-weight: 600 !important;
 }
@@ -144,18 +146,25 @@ a {
   text-decoration: none !important;
 }
 
+/* style news list */
 .title-news {
-  padding: 0px 16px;
+  padding: 2px 16px;
   border-left: 2px solid #daa520;
 }
-
-.detail-featuredNews:hover {
+.image-hot {
+  width: 35px;
+  height: 16px;
+}
+.detail-featuredNews:hover,
+.featured-download:hover {
   color: #f50057 !important;
 }
-.detail-news:hover {
+.detail-news:hover,
+.news-download:hover {
   color: #00a152 !important;
 }
 
+/* style scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
 }

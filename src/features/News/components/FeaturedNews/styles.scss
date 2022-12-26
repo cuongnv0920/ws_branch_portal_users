@@ -4,27 +4,43 @@
   border-left: 1px dotted #f9aa33;
   border-bottom: 1px dotted #f9aa33;
 
+  &__title {
+    display: flex;
+  }
+
   &__title h4 {
-    margin: 0px 0px 16px 0px;
+    margin: 6px 0px;
+    flex-grow: 1;
     font-size: 1.3rem;
     font-weight: 600;
+  }
+
+  &__iconAdd {
+    color: #f50057 !important;
   }
 }
 
 #featuredNews-conent {
-  max-height: 30vh;
+  max-height: 40vh;
   overflow: auto;
 }
 
 .content {
   &__card {
-    margin-top: 8px;
+    margin-top: 16px;
     padding: 12px;
     background-color: #fff;
     border-radius: 4px;
+    transition: 0.3s all;
+  }
+
+  &__card:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
+      rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
   }
 
   &__title {
+    max-width: 100%;
     display: flex;
     padding-bottom: 16px;
   }
@@ -33,7 +49,7 @@
     margin-right: 8px;
   }
 
-  &__detail {
+  &__title a {
     margin: 0;
     font-size: 1rem;
     white-space: nowrap;

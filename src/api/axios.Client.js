@@ -3,9 +3,6 @@ import api from "../configs/api.conf";
 
 const axiosClient = axios.create({
   baseURL: api.URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 // Add a request interceptor

@@ -5,24 +5,24 @@ const configJson = {
   headers: contentType.headersJson,
 };
 
-export const exchangeRateApi = {
+export const userApi = {
   create(data) {
-    const url = "/exchangeRate/create";
+    const url = "/user/create";
     return axiosClient.post(url, data, configJson);
   },
 
   list(data) {
-    const url = "/exchangeRate/list";
+    const url = "/user/list";
     return axiosClient.get(url, data, configJson);
   },
 
   update(data) {
-    const url = `/exchangeRate/update/${data.id}`;
+    const url = `/user/update/${data.id}`;
     return axiosClient.put(url, data, configJson);
   },
 
   delete(data) {
-    const url = `/exchangeRate/delete/${data.id}`;
+    const url = `/user/delete/${data.id}`;
     return axiosClient.put(url, data, configJson);
   },
 };
