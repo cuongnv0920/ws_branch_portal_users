@@ -18,5 +18,6 @@ export default function useNewsDetail(id) {
       setLoading(false);
     })();
   }, [id]);
+
   return { loading, news };
 }

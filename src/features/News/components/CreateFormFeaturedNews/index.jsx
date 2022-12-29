@@ -1,9 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Button,
+  CircularProgress,
   FormControlLabel,
   Grid,
-  LinearProgress,
   MenuItem,
   Radio,
   Typography,
@@ -11,7 +11,9 @@ import {
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import * as yup from "yup";
+import { categoryApi } from "../../../../api";
 import {
   CKEditorField,
   Input,
@@ -20,9 +22,7 @@ import {
   TextareaField,
   UploadField,
 } from "../../../../components/inputField";
-import { categoryApi } from "../../../../api";
 import "./styles.scss";
-import { useSelector } from "react-redux";
 
 CreateFormFeaturedNews.propTypes = {
   onSubmit: PropTypes.func,
@@ -84,8 +84,6 @@ function CreateFormFeaturedNews(props) {
 
   return (
     <div className="createNews">
-      {isSubmitting && <LinearProgress className="createNews__progress" />}
-
       <div className="createNews__title dialogTitle">
         <Typography className="dialogTitle_content">
           Thêm bài viết Thông báo nổi bật
@@ -166,10 +164,16 @@ function CreateFormFeaturedNews(props) {
           type="submit"
           variant="contained"
           fullWidth
-          size="large"
           disabled={isSubmitting}
         >
-          Lưu
+          {isSubmitting ? (
+            <CircularProgress
+              className="createNews__progress"
+              color="secondary"
+            />
+          ) : (
+            "Lưu"
+          )}
         </Button>
       </form>
     </div>

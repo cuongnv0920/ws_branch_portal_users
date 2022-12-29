@@ -12,13 +12,11 @@ import { useSnackbar } from "notistack";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 import { useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
 import { newsApi } from "../../../../api";
 import api from "../../../../configs/api.conf";
 import { showType } from "../../../../utils/index";
 import CreateFeaturedNews from "../CreateFeaturedNews";
 import SkeletonNews from "../Skeleton";
-import PropTypes from "prop-types";
 import "./styles.scss";
 
 FeaturedNews.propTypes = {};
@@ -129,16 +127,20 @@ function FeaturedNews(props) {
                         </>
                       )}
 
-                      <p className="notification__content">
-                        {`${row.view} người xem`}
-                      </p>
-                      <Divider orientation="vertical" flexItem />
+                      {row.code && (
+                        <>
+                          <p className="notification__content">
+                            {`Văn bản số: ${row.code}`}
+                          </p>
+                          <Divider orientation="vertical" flexItem />
+                        </>
+                      )}
 
                       <p className="notification__content">
                         <Moment format="DD/MM/YYYY">{row.createdAt}</Moment>
                       </p>
 
-                      {showType(row.createdAt) < 2 && (
+                      {showType(row.createdAt) <= 2 && (
                         <>
                           <Divider orientation="vertical" flexItem />
                           <p className="notification__content">

@@ -26,7 +26,7 @@ export const newsApi = {
     return axiosClient.put(url, data);
   },
 
-  detail(data) {
-    return axiosClient.get(data);
+  detail(id) {
+    return axiosClient.get(id);
   },
 };

@@ -14,7 +14,7 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <SnackbarProvider
-          maxSnack={3}
+          maxSnack={2}
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
         >
           <App />

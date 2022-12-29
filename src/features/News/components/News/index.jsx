@@ -85,7 +85,7 @@ function News(props) {
                         sx={{ color: "#00a152" }}
                       />
                       <a
-                        href={api.URL + "/detail/" + row.id}
+                        href={`/news/detail/${row.id}`}
                         className="detail-news"
                         title={row.title}
                       >
@@ -121,15 +121,19 @@ function News(props) {
                         </>
                       )}
 
-                      <p className="notification__content">
-                        {`${row.view} người xem`}
-                      </p>
-                      <Divider orientation="vertical" flexItem />
+                      {row.code && (
+                        <>
+                          <p className="notification__content">
+                            {`Văn bản số: ${row.code}`}
+                          </p>
+                          <Divider orientation="vertical" flexItem />
+                        </>
+                      )}
 
                       <p className="notification__content">
                         <Moment format="DD/MM/YYYY">{row.createdAt}</Moment>
                       </p>
-                      {showType(row.createdAt) < 2 && (
+                      {showType(row.createdAt) <= 2 && (
                         <>
                           <Divider orientation="vertical" flexItem />
                           <p className="notification__content">
