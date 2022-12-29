@@ -1,18 +1,18 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import {
+  Button,
+  CircularProgress,
+  FormControlLabel,
+  Grid,
+  MenuItem,
+  Radio,
+  Typography,
+} from "@mui/material";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { levelApi, roomApi } from "../../../../api/index";
-import {
-  Button,
-  FormControlLabel,
-  Grid,
-  LinearProgress,
-  MenuItem,
-  Radio,
-  Typography,
-} from "@mui/material";
 import {
   DateField,
   Input,
@@ -101,7 +101,6 @@ function RegisterForm(props) {
 
   return (
     <div className="register">
-      {isSubmitting && <LinearProgress className="register__progress" />}
       <div className="register__title dialogTitle">
         <Typography className="dialogTitle_content">
           Đăng ký người dùng
@@ -154,10 +153,16 @@ function RegisterForm(props) {
           type="submit"
           variant="contained"
           fullWidth
-          size="large"
           disabled={isSubmitting}
         >
-          Đăng ký
+          {isSubmitting ? (
+            <CircularProgress
+              color="secondary"
+              className="register__progress"
+            />
+          ) : (
+            "Đăng ký"
+          )}
         </Button>
       </form>
     </div>

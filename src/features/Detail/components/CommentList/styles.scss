@@ -1,0 +1,35 @@
+.commentList {
+  &__stack {
+    margin-top: 25px;
+    background-color: #f8f8f8;
+    padding: 8px;
+    border-radius: 4px;
+    transition: 0.3s all;
+  }
+  &__avatar {
+    text-transform: uppercase;
+    background-color: rgb(8, 92, 37) !important;
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__content h4 {
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  &__content h5 {
+    margin: 0;
+    padding: 2px 6px;
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 0.8rem;
+  }
+
+  &__buttonAction {
+    padding: 10px !important;
+  }
+}

@@ -1,0 +1,58 @@
+.contentDetail {
+  background-color: #fff;
+  margin-top: 15px;
+  padding: 20px 16px;
+
+  &__title {
+    margin: 16px 0px;
+    text-align: center;
+  }
+  &__title h4 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  &__text {
+    padding: 18px 0px;
+  }
+}
+
+.labelDetail {
+  &__left {
+    display: flex;
+  }
+
+  &__logo {
+    margin-right: 10px;
+  }
+  &__logo img {
+    width: 80px;
+  }
+
+  &__text {
+    text-align: center;
+  }
+  &__text h4 {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1rem;
+  }
+}
+
+.notificationDetail {
+  display: flex;
+  background-color: #fff;
+  padding: 8px 0px;
+
+  &__content {
+    margin: 0;
+    margin: 8px 16px;
+    font-size: 0.8rem;
+  }
+}
+
+.commentDetail,
+.CommentListDetail {
+  background-color: #fff;
+  padding: 20px 16px;
+}

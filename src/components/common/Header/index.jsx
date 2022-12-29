@@ -23,6 +23,7 @@ import { logout } from "../../../features/Auth/authSlice";
 import Login from "../../../features/Auth/component/Login";
 import Register from "../../../features/Auth/component/Register";
 import logoHeader from "../../../images/logo-header.png";
+import branch from "../../../configs/branch.conf";
 import "./styles.scss";
 
 Header.propTypes = {};
@@ -65,7 +66,7 @@ export function Header(props) {
           </a>
 
           <Typography className="appbar__title">
-            NGÂN HÀNG TMCP ĐẦU TƯ VÀ PHÁT TRIỂN VIỆT NAM - CHI NHÁNH GIA LÂM
+            {`NGÂN HÀNG TMCP ĐẦU TƯ VÀ PHÁT TRIỂN VIỆT NAM - ${branch.name}`}
           </Typography>
 
           {!isLogged && (
@@ -127,8 +128,8 @@ export function Header(props) {
                   Cài đặt tài khoản
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>
-                  <ListItemIcon sx={{ color: "#f50057" }}>
-                    <Logout fontSize="small" />
+                  <ListItemIcon>
+                    <Logout sx={{ color: "#f50057" }} fontSize="small" />
                   </ListItemIcon>
                   Thoát
                 </MenuItem>

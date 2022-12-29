@@ -1,0 +1,20 @@
+.createComment {
+  padding: 16px 0px;
+
+  &__progress {
+    position: absolute;
+  }
+
+  &__button {
+    background: linear-gradient(45deg, #00e676 20%, #d1ff33 90%) !important;
+    font-family: "Muli", sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+  }
+
+  &__avatar {
+    text-transform: uppercase;
+    background-color: rgb(255, 87, 34) !important;
+  }
+}

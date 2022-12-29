@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, LinearProgress, Typography } from "@mui/material";
+import { Button, CircularProgress, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -37,8 +37,6 @@ function LoginForm(props) {
 
   return (
     <div className="login">
-      {isSubmitting && <LinearProgress className="login__progress" />}
-
       <div className="login__title dialogTitle">
         <Typography className="dialogTitle_content">Đăng nhập</Typography>
       </div>
@@ -52,10 +50,13 @@ function LoginForm(props) {
           type="submit"
           variant="contained"
           fullWidth
-          size="large"
           disabled={isSubmitting}
         >
-          Đăng nhập
+          {isSubmitting ? (
+            <CircularProgress className="login__progress" color="secondary" />
+          ) : (
+            "Đăng nhập"
+          )}
         </Button>
       </form>
     </div>
