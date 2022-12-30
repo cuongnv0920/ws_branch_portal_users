@@ -1,23 +1,22 @@
-import React from "react";
-import CreateFormFeaturedNews from "../CreateFormFeaturedNews";
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { useSnackbar } from "notistack";
-import { create } from "../../newsClice";
 import { unwrapResult } from "@reduxjs/toolkit";
+import { useSnackbar } from "notistack";
+import PropTypes from "prop-types";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { deleted } from "../../newsClice";
+import DeleteForm from "../DeleteForm";
 
-CreateFeaturedNews.propTypes = {
+Delete.propTypes = {
   closeDialog: PropTypes.func,
 };
 
-function CreateFeaturedNews(props) {
+function Delete(props) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (values) => {
-    console.log(values);
     try {
-      const action = create(values);
+      const action = deleted(values);
       const resultAction = await dispatch(action);
       unwrapResult(resultAction);
 
@@ -25,6 +24,7 @@ function CreateFeaturedNews(props) {
       if (closeDialog) {
         closeDialog();
       }
+      enqueueSnackbar("Xóa thành công.", { variant: "success" });
     } catch (error) {
       enqueueSnackbar(error.message, { variant: "error" });
     }
@@ -32,9 +32,9 @@ function CreateFeaturedNews(props) {
 
   return (
     <div>
-      <CreateFormFeaturedNews onSubmit={handleSubmit} />
+      <DeleteForm onSubmit={handleSubmit} />
     </div>
   );
 }
 
-export default CreateFeaturedNews;
+export default Delete;

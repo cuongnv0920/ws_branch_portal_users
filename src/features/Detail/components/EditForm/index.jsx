@@ -7,6 +7,7 @@ import { Input } from "../../../../components/inputField";
 import { useForm } from "react-hook-form";
 import { Avatar, Button, CircularProgress, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
+import "./styles.scss";
 
 EditForm.propTypes = {
   onSubmit: PropTypes.func,

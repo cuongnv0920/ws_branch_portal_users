@@ -1,6 +1,6 @@
 import moment from "moment/moment";
 
-export const showType = (createdAt) => {
+export function showType(createdAt) {
   const today = new Date();
   const day = today.getDate();
   const month = today.getMonth() + 1;
@@ -15,4 +15,4 @@ export const showType = (createdAt) => {
   } else {
     return 3;
   }
-};
+}

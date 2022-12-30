@@ -34,6 +34,7 @@ function CreateFormNews(props) {
 
   const [categorys, setCategorys] = useState([]);
   const [hot, setHot] = useState(false);
+  const [blockComment, setBlockComment] = useState(false);
   const [type, setType] = useState("images/new.gif");
 
   const schema = yup.object().shape({
@@ -53,6 +54,7 @@ function CreateFormNews(props) {
       hot: hot,
       command: "",
       content: "",
+      blockComment: blockComment,
     },
 
     resolver: yupResolver(schema),
@@ -60,6 +62,9 @@ function CreateFormNews(props) {
 
   const handleChangeHot = (event) => {
     setHot(event.target.value);
+  };
+  const handleChangeComment = (event) => {
+    setBlockComment(event.target.value);
   };
   const handleChangeType = (event) => {
     setType(event.target.value);
@@ -148,7 +153,22 @@ function CreateFormNews(props) {
               <FormControlLabel value={true} label="Có" control={<Radio />} />
             </RadioField>
           </Grid>
-          <Grid item xs={12} md={6} sm={12}></Grid>
+          <Grid item xs={12} md={6} sm={12}>
+            <RadioField
+              name="blockComment"
+              label="Chặn bình luận"
+              onChange={handleChangeComment}
+              value={blockComment}
+              form={form}
+            >
+              <FormControlLabel
+                value={false}
+                label="Không"
+                control={<Radio />}
+              />
+              <FormControlLabel value={true} label="Có" control={<Radio />} />
+            </RadioField>
+          </Grid>
         </Grid>
 
         <TextareaField

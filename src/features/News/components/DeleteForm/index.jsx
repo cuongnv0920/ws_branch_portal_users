@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 import "./styles.scss";
 
 DeleteForm.propTypes = {
@@ -11,14 +10,11 @@ DeleteForm.propTypes = {
 };
 
 function DeleteForm(props) {
-  const comment = useSelector((state) => state.comment);
-  const { pathname } = useLocation();
-  const news = pathname.split("/").slice(3);
+  const news = useSelector((state) => state.news);
 
   const form = useForm({
     defaultValues: {
-      id: comment._id,
-      news: news,
+      id: news._id,
     },
   });
 
@@ -32,10 +28,10 @@ function DeleteForm(props) {
   const { isSubmitting } = form.formState;
 
   return (
-    <div className="deleteComment">
+    <div className="deleteNews">
       <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <div className="deleteComment__content">
-          <p>Bạn có chắc chắn muốn xóa bình luận này.</p>
+        <div className="deleteNews__content">
+          <p>{`Bạn có chắc chắn muốn xóa bài viết: ${news.title}`}</p>
         </div>
 
         <Button
@@ -47,7 +43,7 @@ function DeleteForm(props) {
         >
           {isSubmitting ? (
             <CircularProgress
-              className="createComment__progress"
+              className="createNews__progress"
               color="secondary"
             />
           ) : (

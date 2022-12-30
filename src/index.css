@@ -155,9 +155,16 @@ a {
   width: 35px;
   height: 16px;
 }
+.detail-featuredNews {
+  flex-grow: 1;
+}
 .detail-featuredNews:hover,
 .featured-download:hover {
   color: #f50057 !important;
+}
+
+.detail-news {
+  flex-grow: 1;
 }
 .detail-news:hover,
 .news-download:hover {
