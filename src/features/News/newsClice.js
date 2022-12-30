@@ -23,11 +23,11 @@ const newsSlice = createSlice({
   name: "news",
   initialState: {},
   reducers: {
-    hotNews(state, action) {
+    getEdit(state, action) {
       return (state = action.payload);
     },
 
-    removeHotNews(state) {
+    removeGetEdit(state) {
       return (state = {});
     },
   },
@@ -47,5 +47,5 @@ const newsSlice = createSlice({
 });
 
 const { actions, reducer } = newsSlice;
-export const { hotNews, removeHotNews } = actions;
+export const { getEdit, removeGetEdit } = actions;
 export default reducer;

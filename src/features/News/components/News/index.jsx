@@ -1,5 +1,7 @@
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import DeleteIcon from "@mui/icons-material/Delete";
 import DiscountIcon from "@mui/icons-material/Discount";
+import EditIcon from "@mui/icons-material/Edit";
 import {
   Button,
   Dialog,
@@ -7,15 +9,19 @@ import {
   DialogContent,
   Divider,
   IconButton,
+  Stack,
 } from "@mui/material";
 import { useSnackbar } from "notistack";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { newsApi } from "../../../../api";
 import api from "../../../../configs/api.conf";
-import { showType } from "../../../../utils/index";
+import { showType } from "../../../../utils";
+import { getEdit, removeGetEdit } from "../../newsClice";
 import CreateNews from "../CreateNews";
+import Delete from "../Delete";
+import Edit from "../Edit";
 import SkeletonNews from "../Skeleton";
 import "./styles.scss";
 
@@ -25,8 +31,11 @@ function News(props) {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [openDialogCreate, setOpenDialogCreate] = useState(false);
-  const logged = useSelector((state) => state.auth.current);
+  const [openDialogEdit, setOpenDialogEdit] = useState(false);
+  const [openDialogDelete, setOpenDialogDelete] = useState(false);
+  const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+  const logged = useSelector((state) => state.auth.current);
 
   const isLoggedAdmin = () => {
     return logged.role === "admin";
@@ -38,21 +47,63 @@ function News(props) {
     setOpenDialogCreate(false);
   };
 
+  const handleCloseDialogEdit = () => {
+    const action = removeGetEdit();
+    dispatch(action);
+    setOpenDialogEdit(false);
+
+    const { refeshCommnetList } = props;
+    if (refeshCommnetList) {
+      refeshCommnetList();
+    }
+  };
+  const handleOpenDialogEdit = async (event) => {
+    try {
+      const id = event.currentTarget.id;
+      const news = await newsApi.get(id);
+      const action = getEdit(news);
+      await dispatch(action);
+
+      setOpenDialogEdit(true);
+    } catch (error) {
+      enqueueSnackbar("Lấy dữ liệu có lỗi, vui lòng liên hệ quản trị.", {
+        variant: "error",
+      });
+    }
+  };
+
+  const handleOpenDialogDelete = async (event) => {
+    try {
+      const id = event.currentTarget.id;
+      const news = await newsApi.get(id);
+      const action = getEdit(news);
+      await dispatch(action);
+
+      setOpenDialogDelete(true);
+    } catch (error) {
+      enqueueSnackbar("Lấy dữ liệu có lỗi, vui lòng liên hệ quản trị.", {
+        variant: "error",
+      });
+    }
+  };
+  const handleCloseDialogDelete = () => {
+    const action = removeGetEdit();
+    dispatch(action);
+    setOpenDialogDelete(false);
+  };
+
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const news = await newsApi.list();
         setNews(news);
       } catch (error) {
-        enqueueSnackbar(
-          "Có lỗi khi lấy dữ liệu, vui lòng kiểm tra lại server",
-          { variant: "error" }
-        );
+        console.log(error);
       }
     };
     setLoading(false);
     fetchNews();
-  }, [openDialogCreate]);
+  }, [openDialogCreate, openDialogEdit, openDialogDelete]);
 
   return (
     <div className="news">
@@ -91,6 +142,39 @@ function News(props) {
                       >
                         {row.title}
                       </a>
+                      {isLoggedAdmin() && (
+                        <Stack
+                          direction="row"
+                          spacing={1}
+                          sx={{ marginLeft: "8px" }}
+                        >
+                          <IconButton
+                            id={row.id}
+                            size="small"
+                            title="Sửa"
+                            className="notification__buttonAction"
+                            onClick={handleOpenDialogEdit}
+                          >
+                            <EditIcon
+                              sx={{ color: "#00a152", fontSize: "1rem" }}
+                              fontSize="small"
+                            />
+                          </IconButton>
+
+                          <IconButton
+                            id={row.id}
+                            size="small"
+                            title="Xóa"
+                            className="notification__buttonAction"
+                            onClick={handleOpenDialogDelete}
+                          >
+                            <DeleteIcon
+                              sx={{ color: "#f50057", fontSize: "1rem" }}
+                              fontSize="small"
+                            />
+                          </IconButton>
+                        </Stack>
+                      )}
                     </div>
 
                     <div className="content__notification notification">
@@ -129,6 +213,11 @@ function News(props) {
                           <Divider orientation="vertical" flexItem />
                         </>
                       )}
+
+                      <p className="notification__content">
+                        {`${row.countComment} Bình luận`}
+                      </p>
+                      <Divider orientation="vertical" flexItem />
 
                       <p className="notification__content">
                         <Moment format="DD/MM/YYYY">{row.createdAt}</Moment>
@@ -170,6 +259,52 @@ function News(props) {
           <Button
             className="dialogButtonCancel"
             onClick={handleCloseDialogCreate}
+          >
+            Thoát
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        fullWidth="md"
+        maxWidth="md"
+        open={openDialogEdit}
+        onClose={(event, reason) => {
+          if (reason !== "backdropClick") {
+            handleCloseDialogEdit(event, reason);
+          }
+        }}
+      >
+        <DialogContent>
+          <Edit closeDialog={handleCloseDialogEdit} />
+        </DialogContent>
+        <DialogActions className="dialogAction">
+          <Button
+            className="dialogButtonCancel"
+            onClick={handleCloseDialogEdit}
+          >
+            Thoát
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        fullWidth="sm"
+        maxWidth="sm"
+        open={openDialogDelete}
+        onClose={(event, reason) => {
+          if (reason !== "backdropClick") {
+            handleCloseDialogDelete(event, reason);
+          }
+        }}
+      >
+        <DialogContent>
+          <Delete closeDialog={handleCloseDialogDelete} />
+        </DialogContent>
+        <DialogActions className="dialogAction">
+          <Button
+            className="dialogButtonCancel"
+            onClick={handleCloseDialogDelete}
           >
             Thoát
           </Button>

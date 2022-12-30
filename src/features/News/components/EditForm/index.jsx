@@ -24,18 +24,17 @@ import {
 } from "../../../../components/inputField";
 import "./styles.scss";
 
-CreateFormFeaturedNews.propTypes = {
+EditForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-function CreateFormFeaturedNews(props) {
-  const logged = useSelector((state) => state.auth.current);
-  const user = logged._id;
+function EditForm(props) {
+  const news = useSelector((state) => state.news);
 
   const [categorys, setCategorys] = useState([]);
-  const [hot, setHot] = useState(true);
-  const [blockComment, setBlockComment] = useState(false);
-  const [type, setType] = useState("images/new.gif");
+  const [hot, setHot] = useState(news.hot);
+  const [blockComment, setBlockComment] = useState(news.blockComment);
+  const [type, setType] = useState(news.type);
 
   const schema = yup.object().shape({
     title: yup.string().required("Vui lòng nhập tiêu đề bài viết."),
@@ -44,16 +43,16 @@ function CreateFormFeaturedNews(props) {
 
   const form = useForm({
     defaultValues: {
-      title: "",
+      id: news._id,
+      title: news.title,
       type: type,
-      category: "",
-      user: user,
+      category: news.category?._id,
       file_1: "",
       file_2: "",
-      code: "",
+      code: news.code,
       hot: hot,
-      command: "",
-      content: "",
+      command: news.command,
+      content: news.content,
       blockComment: blockComment,
     },
 
@@ -88,11 +87,9 @@ function CreateFormFeaturedNews(props) {
   const { isSubmitting } = form.formState;
 
   return (
-    <div className="createNews">
-      <div className="createNews__title dialogTitle">
-        <Typography className="dialogTitle_content">
-          Thêm bài viết Thông báo nổi bật
-        </Typography>
+    <div className="editForm">
+      <div className="editForm__title dialogTitle">
+        <Typography className="dialogTitle_content">Sửa bài viết</Typography>
       </div>
 
       <form onSubmit={form.handleSubmit(handleSubmit)}>
@@ -102,7 +99,7 @@ function CreateFormFeaturedNews(props) {
           </Grid>
           <Grid item xs={12} md={6} sm={12}>
             <SelectField name="category" label="Danh mục" form={form}>
-              {categorys.map((category, index) => (
+              {categorys.map((category, _) => (
                 <MenuItem value={category.id}>{category.name}</MenuItem>
               ))}
             </SelectField>
@@ -200,4 +197,4 @@ function CreateFormFeaturedNews(props) {
   );
 }
 
-export default CreateFormFeaturedNews;
+export default EditForm;

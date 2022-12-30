@@ -37,6 +37,14 @@ function DetailNews(props) {
     setRefeshCommnetList(refeshCommnetList + 1);
   };
 
+  function showCreateFormComment() {
+    if (isLogged && news.blockComment === false) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   useEffect(() => {
     const fetchComments = async () => {
       const comments = await commentApi.list();
@@ -45,7 +53,9 @@ function DetailNews(props) {
     fetchComments();
   }, [refeshCommnetList]);
 
-  const commentList = comments.filter((comment) => comment.news === newsId[0]);
+  const commentList = comments
+    .sort((a, b) => (new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1))
+    .filter((comment) => comment.news === newsId[0]);
 
   if (loading) {
     return (
@@ -140,7 +150,7 @@ function DetailNews(props) {
           </>
         )}
 
-        <p className="notificationDetail__content">{`${news.view} người xem`}</p>
+        <p className="notificationDetail__content">{`${news.countComment} Bình luận`}</p>
         <Divider orientation="vertical" flexItem />
 
         <p className="notificationDetail__content">
@@ -150,7 +160,7 @@ function DetailNews(props) {
       </div>
 
       <Divider flexItem />
-      {isLogged && (
+      {showCreateFormComment() && (
         <div className="detail__comment commentDetail">
           <Create refeshCommnetList={handleRefeshCommentList} />
         </div>

@@ -1,23 +1,22 @@
 import React from "react";
-import CreateFormFeaturedNews from "../CreateFormFeaturedNews";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { useSnackbar } from "notistack";
-import { create } from "../../newsClice";
+import { edit } from "../../newsClice";
 import { unwrapResult } from "@reduxjs/toolkit";
+import EditForm from "../EditForm";
 
-CreateFeaturedNews.propTypes = {
+Edit.propTypes = {
   closeDialog: PropTypes.func,
 };
 
-function CreateFeaturedNews(props) {
+function Edit(props) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (values) => {
-    console.log(values);
     try {
-      const action = create(values);
+      const action = edit(values);
       const resultAction = await dispatch(action);
       unwrapResult(resultAction);
 
@@ -25,6 +24,7 @@ function CreateFeaturedNews(props) {
       if (closeDialog) {
         closeDialog();
       }
+      enqueueSnackbar("Cập nhật thành công.", { variant: "success" });
     } catch (error) {
       enqueueSnackbar(error.message, { variant: "error" });
     }
@@ -32,9 +32,9 @@ function CreateFeaturedNews(props) {
 
   return (
     <div>
-      <CreateFormFeaturedNews onSubmit={handleSubmit} />
+      <EditForm onSubmit={handleSubmit} />
     </div>
   );
 }
 
-export default CreateFeaturedNews;
+export default Edit;
