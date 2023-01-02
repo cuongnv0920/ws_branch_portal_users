@@ -1,14 +1,16 @@
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+import AddToPhotosOutlinedIcon from "@mui/icons-material/AddToPhotosOutlined";
 import AssistantPhotoIcon from "@mui/icons-material/AssistantPhoto";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import {
   Button,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
   Divider,
   IconButton,
+  Pagination,
   Stack,
 } from "@mui/material";
 import { useSnackbar } from "notistack";
@@ -33,6 +35,15 @@ function FeaturedNews(props) {
   const [openDialogCreate, setOpenDialogCreate] = useState(false);
   const [openDialogEdit, setOpenDialogEdit] = useState(false);
   const [openDialogDelete, setOpenDialogDelete] = useState(false);
+  const [pagination, setPagination] = useState({
+    limit: 5,
+    count: 5,
+    page: 1,
+  });
+  const [filters, setFilters] = useState({
+    _page: 1,
+    _limit: 5,
+  });
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const logged = useSelector((state) => state.auth.current);
@@ -96,15 +107,23 @@ function FeaturedNews(props) {
   useEffect(() => {
     const fetchFeaturedNews = async () => {
       try {
-        const featuredNews = await newsApi.list();
-        setFeaturedNews(featuredNews);
+        const { news, paginations } = await newsApi.getFeatured(filters);
+        setFeaturedNews(news);
+        setPagination(paginations);
       } catch (error) {
         console.log(error);
       }
     };
     setLoading(false);
     fetchFeaturedNews();
-  }, [openDialogCreate, openDialogEdit, openDialogDelete]);
+  }, [filters, openDialogCreate, openDialogEdit, openDialogDelete]);
+
+  const handlePageChande = (event, page) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      _page: page,
+    }));
+  };
 
   return (
     <div className="featuredNews">
@@ -115,14 +134,14 @@ function FeaturedNews(props) {
           <div className="featuredNews__title title-news">
             <h4>Thông tin nổi bật</h4>
             {isLoggedAdmin() && (
-              <IconButton
-                className="featuredNews__iconAdd"
-                aria-label="Thêm bài viết"
-                title="Thêm bài viết"
+              <Chip
+                className="news__chip"
+                label="Thêm bài viết"
                 onClick={handleOpenDialogCreate}
-              >
-                <AddCircleIcon />
-              </IconButton>
+                icon={
+                  <AddToPhotosOutlinedIcon className="featuredNews__iconAdd" />
+                }
+              />
             )}
           </div>
 
@@ -130,126 +149,133 @@ function FeaturedNews(props) {
             className="featuredNews__content content"
             id="featuredNews-conent"
           >
-            {featuredNews.map(
-              (row, index) =>
-                row.hot === true && (
-                  <div className="content__card">
-                    <div className="content__title">
-                      <AssistantPhotoIcon
-                        className="content__icon"
-                        sx={{ color: "#f50057" }}
-                      />
-                      <a
-                        href={`/news/detail/${row.id}`}
-                        className="detail-featuredNews"
-                        title={row.title}
+            {featuredNews.map((row, index) => (
+              <div className="content__card">
+                <div className="content__title">
+                  <AssistantPhotoIcon
+                    className="content__icon"
+                    sx={{ color: "#f50057" }}
+                  />
+                  <a
+                    href={`/news/detail/${row.id}`}
+                    className="detail-featuredNews"
+                    title={row.title}
+                  >
+                    {row.title}
+                  </a>
+                  {isLoggedAdmin() && (
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      sx={{ marginLeft: "8px" }}
+                    >
+                      <IconButton
+                        id={row.id}
+                        size="small"
+                        title="Sửa bài viết"
+                        className="notification__buttonAction"
+                        onClick={handleOpenDialogEdit}
                       >
-                        {row.title}
-                      </a>
-                      {isLoggedAdmin() && (
-                        <Stack
-                          direction="row"
-                          spacing={1}
-                          sx={{ marginLeft: "8px" }}
+                        <EditIcon
+                          sx={{ color: "#00a152", fontSize: "1rem" }}
+                          fontSize="small"
+                        />
+                      </IconButton>
+
+                      <IconButton
+                        id={row.id}
+                        size="small"
+                        title="Xóa bài viết"
+                        className="notification__buttonAction"
+                        onClick={handleOpenDialogDelete}
+                      >
+                        <DeleteIcon
+                          sx={{ color: "#f50057", fontSize: "1rem" }}
+                          fontSize="small"
+                        />
+                      </IconButton>
+                    </Stack>
+                  )}
+                </div>
+
+                <div className="content__notification notification">
+                  {row.file_1 && (
+                    <>
+                      <p className="notification__content">
+                        <a
+                          className="featured-download"
+                          href={api.URL + "/" + row?.file_1}
                         >
-                          <IconButton
-                            id={row.id}
-                            size="small"
-                            title="Sửa"
-                            className="notification__buttonAction"
-                            onClick={handleOpenDialogEdit}
-                          >
-                            <EditIcon
-                              sx={{ color: "#00a152", fontSize: "1rem" }}
-                              fontSize="small"
-                            />
-                          </IconButton>
-
-                          <IconButton
-                            id={row.id}
-                            size="small"
-                            title="Xóa"
-                            className="notification__buttonAction"
-                            onClick={handleOpenDialogDelete}
-                          >
-                            <DeleteIcon
-                              sx={{ color: "#f50057", fontSize: "1rem" }}
-                              fontSize="small"
-                            />
-                          </IconButton>
-                        </Stack>
-                      )}
-                    </div>
-
-                    <div className="content__notification notification">
-                      {row.file_1 && (
-                        <>
-                          <p className="notification__content">
-                            <a
-                              className="featured-download"
-                              href={api.URL + "/" + row?.file_1}
-                            >
-                              Tải file
-                            </a>
-                          </p>
-                          <Divider orientation="vertical" flexItem />
-                        </>
-                      )}
-
-                      {row.file_2 && (
-                        <>
-                          <p className="notification__content">
-                            <a
-                              className="featured-download"
-                              href={api.URL + "/" + row?.file_2}
-                            >
-                              Tải file
-                            </a>
-                          </p>
-                          <Divider orientation="vertical" flexItem />
-                        </>
-                      )}
-
-                      {row.code && (
-                        <>
-                          <p className="notification__content">
-                            {`Văn bản số ${row.code}`}
-                          </p>
-                          <Divider orientation="vertical" flexItem />
-                        </>
-                      )}
-
-                      <p className="notification__content">
-                        {`${row.countComment} Bình luận`}
+                          Tải file
+                        </a>
                       </p>
                       <Divider orientation="vertical" flexItem />
+                    </>
+                  )}
 
+                  {row.file_2 && (
+                    <>
                       <p className="notification__content">
-                        <Moment format="DD/MM/YYYY">{row.createdAt}</Moment>
+                        <a
+                          className="featured-download"
+                          href={api.URL + "/" + row?.file_2}
+                        >
+                          Tải file
+                        </a>
                       </p>
-
-                      {showType(row.createdAt) <= 2 && (
-                        <>
-                          <Divider orientation="vertical" flexItem />
-                          <p className="notification__content">
-                            <img
-                              className="image-hot"
-                              src={api.URL + "/" + row.type}
-                              alt=""
-                            />
-                          </p>
-                        </>
-                      )}
-
                       <Divider orientation="vertical" flexItem />
-                      <p className="notification__content"></p>
-                    </div>
-                  </div>
-                )
-            )}
+                    </>
+                  )}
+
+                  {row.code && (
+                    <>
+                      <p className="notification__content">
+                        {`Văn bản số ${row.code}`}
+                      </p>
+                      <Divider orientation="vertical" flexItem />
+                    </>
+                  )}
+
+                  <p className="notification__content">
+                    {`${row.countComment} Bình luận`}
+                  </p>
+                  <Divider orientation="vertical" flexItem />
+
+                  <p className="notification__content">
+                    <Moment format="DD/MM/YYYY">{row.createdAt}</Moment>
+                  </p>
+
+                  {showType(row.createdAt) <= 2 && (
+                    <>
+                      <Divider orientation="vertical" flexItem />
+                      <p className="notification__content">
+                        <img
+                          className="image-hot"
+                          src={api.URL + "/" + row.type}
+                          alt=""
+                        />
+                      </p>
+                    </>
+                  )}
+
+                  <Divider orientation="vertical" flexItem />
+                  <p className="notification__content"></p>
+                </div>
+              </div>
+            ))}
           </div>
         </>
       )}
+
+      <Stack spacing={2} className="featuredNews__pagination">
+        <Pagination
+          count={pagination.count}
+          variant="outlined"
+          color="secondary"
+          page={pagination.page}
+          onChange={handlePageChande}
+        />
+      </Stack>
 
       <Dialog
         fullWidth="md"

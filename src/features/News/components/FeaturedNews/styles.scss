@@ -18,6 +18,10 @@
   &__iconAdd {
     color: #f50057 !important;
   }
+
+  &__pagination {
+    margin: 16px 0px 8px 0px !important;
+  }
 }
 
 #featuredNews-conent {
@@ -64,5 +68,9 @@
     font-size: 0.8rem;
     color: #4a6572 !important;
     font-weight: 500;
+  }
+
+  &__buttonAction {
+    background-color: rgba(0, 0, 0, 0.08) !important;
   }
 }

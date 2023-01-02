@@ -14,8 +14,13 @@ export const newsApi = {
     return axiosClient.post(url, data, configFormData);
   },
 
-  list(data) {
-    const url = "/news/list";
+  getAll(params) {
+    const url = "/news/getAll";
+    return axiosClient.get(url, { params }, configJson);
+  },
+
+  getFeatured(data) {
+    const url = `/news/getFeatured/${data._page}`;
     return axiosClient.get(url, data, configJson);
   },
 

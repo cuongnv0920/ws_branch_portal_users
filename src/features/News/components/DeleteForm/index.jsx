@@ -10,7 +10,7 @@ DeleteForm.propTypes = {
 };
 
 function DeleteForm(props) {
-  const news = useSelector((state) => state.news);
+  const news = useSelector((state) => state.news.current);
 
   const form = useForm({
     defaultValues: {

@@ -8,19 +8,13 @@ import {
   Paper,
 } from "@mui/material";
 import { Box, Container } from "@mui/system";
-import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import moment from "moment/moment";
 import { ExchangeRate, Header, MenuAppbar } from "./components/common";
-import { userApi } from "./api";
-import News from "./features/News";
+import Footer from "./components/common/Footer";
 import Detail from "./features/Detail";
+import News from "./features/News";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [openBirthday, setOpenBirthday] = useState(false);
-  const today = new Date();
-
   const routes = [
     {
       path: "/*",
@@ -33,21 +27,6 @@ function App() {
       role: "user",
     },
   ];
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const users = await userApi.list();
-      setUsers(users);
-    };
-    fetchUsers();
-  }, []);
-
-  // useEffect(() => {
-  //   const birthday = users.filter((user, _) => user?.birthday);
-  //   const date = new Date(birthday[0]?.birthday);
-  //   console.log(date.getDate());
-  //   console.log(date.getMonth() + 1);
-  // });
 
   return (
     <div className="App">
@@ -76,6 +55,8 @@ function App() {
           </Grid>
         </Container>
       </Box>
+
+      <Footer />
 
       <Dialog>
         <DialogContent>Nội dung</DialogContent>

@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { useSelector } from "react-redux";
-import { Input } from "../../../../components/inputField";
-import { useForm } from "react-hook-form";
-import { Avatar, Button, CircularProgress, Typography } from "@mui/material";
+import { Avatar, Button, CircularProgress } from "@mui/material";
 import { Stack } from "@mui/system";
+import PropTypes from "prop-types";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import * as yup from "yup";
+import { Input } from "../../../../components/inputField";
 import "./styles.scss";
 
 EditForm.propTypes = {
