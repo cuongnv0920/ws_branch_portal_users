@@ -29,7 +29,7 @@ EditForm.propTypes = {
 };
 
 function EditForm(props) {
-  const news = useSelector((state) => state.news);
+  const news = useSelector((state) => state.news.current);
 
   const [categorys, setCategorys] = useState([]);
   const [hot, setHot] = useState(news.hot);

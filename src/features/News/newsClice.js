@@ -21,14 +21,38 @@ export const deleted = createAsyncThunk("news/delete", async (payload) => {
 
 const newsSlice = createSlice({
   name: "news",
-  initialState: {},
+  initialState: {
+    current: {},
+    filterCategory: {},
+    filterSearchTerm: {},
+  },
   reducers: {
     getEdit(state, action) {
-      return (state = action.payload);
+      return {
+        ...state,
+        current: action.payload,
+      };
     },
 
     removeGetEdit(state) {
-      return (state = {});
+      return {
+        ...state,
+        current: {},
+      };
+    },
+
+    filterCategory(state, action) {
+      return {
+        ...state,
+        filterCategory: action.payload,
+      };
+    },
+
+    filterSearchTerm(state, action) {
+      return {
+        ...state,
+        filterSearchTerm: action.payload,
+      };
     },
   },
   extraReducers: {
@@ -47,5 +71,6 @@ const newsSlice = createSlice({
 });
 
 const { actions, reducer } = newsSlice;
-export const { getEdit, removeGetEdit } = actions;
+export const { getEdit, removeGetEdit, filterCategory, filterSearchTerm } =
+  actions;
 export default reducer;

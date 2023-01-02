@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import ListPage from "./pages/ListPage";
+import ListPage from "../News/pages/ListPage";
 
 News.propTypes = {};
 

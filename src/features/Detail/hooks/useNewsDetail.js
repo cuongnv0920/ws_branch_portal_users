@@ -12,7 +12,7 @@ export default function useNewsDetail(id) {
         const data = await newsApi.detail(id);
         setNews(data);
       } catch (error) {
-        console.log("Lỗi khi lấy dữ liệu chi tiết: ", error);
+        console.log("Có lỗi khi lấy dữ liệu chi tiết: ", error);
       }
 
       setLoading(false);

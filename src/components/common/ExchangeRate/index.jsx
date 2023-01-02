@@ -59,7 +59,7 @@ export function ExchangeRate(props) {
           )
       )}
 
-      <TableContainer sx={{ maxHeight: 350 }}>
+      <TableContainer sx={{ maxHeight: 450 }}>
         <Table stickyHeader className="exchangeRate__table table">
           <TableHead className="table__head head">
             <TableRow className="head__row">
