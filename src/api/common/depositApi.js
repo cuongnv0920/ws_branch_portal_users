@@ -5,29 +5,24 @@ const configJson = {
   headers: contentType.headersJson,
 };
 
-export const commentApi = {
+export const depositApi = {
   create(data) {
-    const url = "/comment/create";
+    const url = "/deposit/create";
     return axiosClient.post(url, data, configJson);
   },
 
   getAll(data) {
-    const url = "/comment/getAll";
+    const url = "/deposit/getAll";
     return axiosClient.get(url, data, configJson);
   },
 
-  get(id) {
-    const url = `/comment/get/${id}`;
-    return axiosClient.get(url, id, configJson);
-  },
-
   update(data) {
-    const url = `/comment/update/${data.id}`;
+    const url = `/deposit/update/${data.id}`;
     return axiosClient.put(url, data, configJson);
   },
 
   delete(data) {
-    const url = `/comment/delete/${data.id}`;
+    const url = `/deposit/delete/${data.id}`;
     return axiosClient.put(url, data, configJson);
   },
 };

@@ -19,9 +19,9 @@ export const newsApi = {
     return axiosClient.get(url, { params }, configJson);
   },
 
-  getFeatured(data) {
-    const url = `/news/getFeatured/${data._page}`;
-    return axiosClient.get(url, data, configJson);
+  getFeatured(params) {
+    const url = "/news/getFeatured";
+    return axiosClient.get(url, { params }, configJson);
   },
 
   get(id) {

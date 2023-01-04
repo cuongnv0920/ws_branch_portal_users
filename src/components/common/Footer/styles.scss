@@ -1,4 +1,28 @@
 .footer {
   background-color: #26272b;
-  color: #737373;
+
+  &__title {
+    margin: 0;
+    color: #f8f8f8;
+    font-size: 1.2rem;
+  }
+
+  &__copyright {
+    margin: 0;
+    color: #737373 !important;
+    font-size: 1rem;
+  }
+}
+
+.listFooter {
+  &__iconButton {
+    background-color: #737373 !important;
+  }
+  &__listIcon svg {
+    color: #f8f8f8;
+  }
+  &__listText span {
+    color: #f8f8f8;
+    font-size: 0.9rem;
+  }
 }

@@ -96,7 +96,7 @@ export function MenuAppbar(props) {
 
   useEffect(() => {
     const fetchCategory = async () => {
-      const categorys = await categoryApi.list();
+      const categorys = await categoryApi.getAll();
       setCategorys(categorys);
     };
     fetchCategory();
@@ -104,7 +104,7 @@ export function MenuAppbar(props) {
 
   useEffect(() => {
     const fetchLink = async () => {
-      const links = await linkApi.list();
+      const links = await linkApi.getAll();
       setLinks(links);
     };
     fetchLink();
@@ -133,7 +133,7 @@ export function MenuAppbar(props) {
       };
       const action = filterSearchTerm({
         value: formValues,
-        title: "Tìm kiếm",
+        title: "Kết quả tìm kiếm",
       });
       dispatch(action);
     }, 300);
@@ -223,7 +223,7 @@ export function MenuAppbar(props) {
 
             <Divider orientation="vertical" flexItem variant="middle" />
             <Button className="menu__button">
-              <li href="/">Danh bạ</li>
+              <a href="contact">Danh bạ</a>
             </Button>
 
             {isLoggedAdmin() && (

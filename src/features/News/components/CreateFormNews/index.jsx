@@ -79,7 +79,7 @@ function CreateFormNews(props) {
 
   useEffect(() => {
     const fetchCategorys = async () => {
-      const categorys = await categoryApi.list();
+      const categorys = await categoryApi.getAll();
       setCategorys(categorys);
     };
     fetchCategorys();

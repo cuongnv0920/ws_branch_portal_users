@@ -8,3 +8,4 @@ export * from "./common/exchangeRateApi";
 export * from "./common/userApi";
 export * from "./common/newsApi";
 export * from "./common/commentApi";
+export * from "./common/depositApi";

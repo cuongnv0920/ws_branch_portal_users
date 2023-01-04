@@ -11,8 +11,8 @@ export const exchangeRateApi = {
     return axiosClient.post(url, data, configJson);
   },
 
-  list(data) {
-    const url = "/exchangeRate/list";
+  getAll(data) {
+    const url = "/exchangeRate/getAll";
     return axiosClient.get(url, data, configJson);
   },
 
