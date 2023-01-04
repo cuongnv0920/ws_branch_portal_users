@@ -11,8 +11,8 @@ export const marginApi = {
     return axiosClient.post(url, data, configJson);
   },
 
-  list(data) {
-    const url = "/margin/list";
+  getAll(data) {
+    const url = "/margin/getAll";
     return axiosClient.get(url, data, configJson);
   },
 

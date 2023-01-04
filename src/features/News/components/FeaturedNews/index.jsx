@@ -30,6 +30,10 @@ import "./styles.scss";
 FeaturedNews.propTypes = {};
 
 function FeaturedNews(props) {
+  const logged = useSelector((state) => state.auth.current);
+  const category = useSelector((state) => state.news.filterCategory);
+  const searchTerm = useSelector((state) => state.news.filterSearchTerm);
+  const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(true);
   const [featuredNews, setFeaturedNews] = useState([]);
   const [openDialogCreate, setOpenDialogCreate] = useState(false);
@@ -46,8 +50,6 @@ function FeaturedNews(props) {
   });
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
-  const logged = useSelector((state) => state.auth.current);
-
   const isLoggedAdmin = () => {
     return logged.role === "admin";
   };
@@ -125,6 +127,45 @@ function FeaturedNews(props) {
     }));
   };
 
+  useEffect(() => {
+    const fetchCategory = async () => {
+      await setFilters((prevFilters) => ({
+        ...prevFilters,
+        _category: category.id,
+      }));
+
+      if (!!category.title) {
+        setTitle(category.title);
+      } else {
+        setTitle("Thông tin nổi bật");
+      }
+    };
+    const timer = setTimeout(() => {
+      fetchCategory();
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [filters]);
+
+  useEffect(() => {
+    const fetchSearchTerm = async () => {
+      await setFilters((prevFilters) => ({
+        ...prevFilters,
+        _search: searchTerm.value?.searchTerm,
+      }));
+
+      if (!!searchTerm?.title) {
+        setTitle(searchTerm.title);
+      }
+    };
+
+    const timer = setTimeout(() => {
+      fetchSearchTerm();
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [filters]);
+
   return (
     <div className="featuredNews">
       {loading ? (
@@ -132,7 +173,7 @@ function FeaturedNews(props) {
       ) : (
         <>
           <div className="featuredNews__title title-news">
-            <h4>Thông tin nổi bật</h4>
+            <h4>{title}</h4>
             {isLoggedAdmin() && (
               <Chip
                 className="news__chip"

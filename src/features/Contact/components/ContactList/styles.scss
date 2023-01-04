@@ -1,0 +1,37 @@
+.contentContact {
+  padding: 20px 16px;
+}
+
+.containerContact {
+  height: 150vh;
+  overflow: auto;
+}
+
+.cardContact {
+  margin-top: 16px;
+  background-color: #fff;
+  &__content {
+    padding: 6px !important;
+  }
+
+  &__listItem {
+    padding: 3px 6px 3px 6px !important;
+  }
+
+  &__listIcon {
+    min-width: 25px !important;
+  }
+  &__listIcon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &__listText span {
+    font-family: "Muli", sans-serif !important;
+    font-size: 0.9rem;
+  }
+
+  &__action h5 {
+    margin: 0;
+  }
+}

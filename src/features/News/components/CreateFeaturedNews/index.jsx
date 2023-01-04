@@ -15,7 +15,6 @@ function CreateFeaturedNews(props) {
   const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (values) => {
-    console.log(values);
     try {
       const action = create(values);
       const resultAction = await dispatch(action);

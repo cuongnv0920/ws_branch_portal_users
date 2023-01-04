@@ -10,7 +10,9 @@ import {
 import { Box, Container } from "@mui/system";
 import { Route, Routes } from "react-router-dom";
 import { ExchangeRate, Header, MenuAppbar } from "./components/common";
+import Deposit from "./components/common/Deposit";
 import Footer from "./components/common/Footer";
+import Contact from "./features/Contact";
 import Detail from "./features/Detail";
 import News from "./features/News";
 
@@ -24,6 +26,11 @@ function App() {
     {
       path: "/news/detail/:id",
       element: <Detail />,
+      role: "user",
+    },
+    {
+      path: "/contact",
+      element: <Contact />,
       role: "user",
     },
   ];
@@ -50,6 +57,9 @@ function App() {
             <Grid item xs={12} md={5} sm={12}>
               <Paper>
                 <ExchangeRate />
+              </Paper>
+              <Paper sx={{ marginTop: "35px" }}>
+                <Deposit />
               </Paper>
             </Grid>
           </Grid>

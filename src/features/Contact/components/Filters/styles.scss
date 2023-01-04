@@ -1,0 +1,20 @@
+.roomList {
+  &__title {
+    font-size: 1rem !important;
+    font-family: "Muli", sans-serif;
+  }
+}
+.listButton {
+  background-color: #fff;
+  margin-top: 16 !important;
+
+  &__listIcon {
+    min-width: 35px !important;
+  }
+  &__listIcon svg {
+    color: #f8d775;
+  }
+  &__listText span {
+    font-family: "Muli", sans-serif !important;
+  }
+}

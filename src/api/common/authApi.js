@@ -11,8 +11,8 @@ export const authApi = {
     return axiosClient.post(url, data, configJson);
   },
 
-  list(data) {
-    const url = "/user/list";
+  getAll(data) {
+    const url = "/user/getAll";
     return axiosClient.get(url, data, configJson);
   },
 

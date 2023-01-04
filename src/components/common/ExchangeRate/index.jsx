@@ -19,7 +19,7 @@ export function ExchangeRate(props) {
 
   useEffect(() => {
     const fetchExchangeRates = async () => {
-      const exchangeRates = await exchangeRateApi.list();
+      const exchangeRates = await exchangeRateApi.getAll();
       setExchangeRates(exchangeRates);
     };
     fetchExchangeRates();
@@ -27,7 +27,7 @@ export function ExchangeRate(props) {
 
   useEffect(() => {
     const fetchMargins = async () => {
-      const margins = await marginApi.list();
+      const margins = await marginApi.getAll();
       setMarrgins(margins);
     };
     fetchMargins();
@@ -59,7 +59,7 @@ export function ExchangeRate(props) {
           )
       )}
 
-      <TableContainer sx={{ maxHeight: 450 }}>
+      <TableContainer sx={{ maxHeight: 535 }}>
         <Table stickyHeader className="exchangeRate__table table">
           <TableHead className="table__head head">
             <TableRow className="head__row">

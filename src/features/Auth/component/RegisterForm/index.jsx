@@ -69,7 +69,7 @@ function RegisterForm(props) {
 
   useEffect(() => {
     const fetchRooms = async () => {
-      const rooms = await roomApi.list();
+      const rooms = await roomApi.getAll();
       setRooms(rooms);
     };
     fetchRooms();
@@ -77,7 +77,7 @@ function RegisterForm(props) {
 
   useEffect(() => {
     const fetchLevels = async () => {
-      const levels = await levelApi.list();
+      const levels = await levelApi.getAll();
       setLevels(levels);
     };
     fetchLevels();

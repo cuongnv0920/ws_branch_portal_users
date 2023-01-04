@@ -38,7 +38,7 @@ function DetailNews(props) {
   };
 
   function showCreateFormComment() {
-    if (isLogged && news.blockComment === false) {
+    if (isLogged && !news.blockComment) {
       return true;
     } else {
       return false;
@@ -47,7 +47,7 @@ function DetailNews(props) {
 
   useEffect(() => {
     const fetchComments = async () => {
-      const comments = await commentApi.list();
+      const comments = await commentApi.getAll();
       setComments(comments);
     };
     fetchComments();
@@ -74,8 +74,8 @@ function DetailNews(props) {
         <Link underline="hover" color="inherit" href="/">
           Trang chủ
         </Link>
-        <Link underline="hover" color="text.primary" href="/detail/:id">
-          Tên danh mục
+        <Link underline="hover" color="text.primary">
+          {news.category.name}
         </Link>
       </Breadcrumbs>
 

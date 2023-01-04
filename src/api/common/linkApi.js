@@ -11,8 +11,8 @@ export const linkApi = {
     return axiosClient.post(url, data, configJson);
   },
 
-  list(data) {
-    const url = "/link/list";
+  getAll(data) {
+    const url = "/link/getAll";
     return axiosClient.get(url, data, configJson);
   },
 

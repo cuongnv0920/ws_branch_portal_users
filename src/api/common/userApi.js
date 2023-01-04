@@ -11,9 +11,14 @@ export const userApi = {
     return axiosClient.post(url, data, configJson);
   },
 
-  list(data) {
-    const url = "/user/list";
+  getAll(data) {
+    const url = "/user/getAll";
     return axiosClient.get(url, data, configJson);
+  },
+
+  getContact(params) {
+    const url = "/user/getContact";
+    return axiosClient.get(url, { params }, configJson);
   },
 
   update(data) {

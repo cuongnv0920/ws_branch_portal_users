@@ -30,14 +30,14 @@ function News(props) {
   const [openDialogEdit, setOpenDialogEdit] = useState(false);
   const [openDialogDelete, setOpenDialogDelete] = useState(false);
   const [pagination, setPagination] = useState({
-    limit: 10,
-    count: 10,
+    limit: 8,
+    count: 8,
     page: 1,
   });
 
   const [filters, setFilters] = useState({
     _page: 1,
-    _limit: 10,
+    _limit: 8,
   });
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
@@ -138,7 +138,6 @@ function News(props) {
     const fetchSearchTerm = async () => {
       await setFilters((prevFilters) => ({
         ...prevFilters,
-        _page: 1,
         _search: searchTerm.value?.searchTerm,
       }));
 

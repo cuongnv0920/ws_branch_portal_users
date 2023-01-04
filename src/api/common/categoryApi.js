@@ -11,8 +11,8 @@ export const categoryApi = {
     return axiosClient.post(url, data, configJson);
   },
 
-  list(data) {
-    const url = "/category/list";
+  getAll(data) {
+    const url = "/category/getAll";
     return axiosClient.get(url, data, configJson);
   },
 
