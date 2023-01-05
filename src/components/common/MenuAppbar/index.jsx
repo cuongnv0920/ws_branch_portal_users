@@ -15,7 +15,7 @@ import InputBase from "@mui/material/InputBase";
 import { alpha, styled } from "@mui/material/styles";
 import { Box, Container } from "@mui/system";
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { categoryApi, linkApi } from "../../../api";
 import {
   filterCategory,
@@ -74,12 +74,7 @@ export function MenuAppbar(props) {
   const [openLinkMenu, setOpenLinkMenu] = useState(null);
   const [categorys, setCategorys] = useState([]);
   const [links, setLinks] = useState([]);
-  const logged = useSelector((state) => state.auth.current);
   const dispatch = useDispatch();
-
-  const isLoggedAdmin = () => {
-    return logged.role === "admin";
-  };
 
   const handleOpenCategoryMenu = (event) => {
     setOpenCategoryMenu(event.currentTarget);
@@ -226,20 +221,12 @@ export function MenuAppbar(props) {
               <a href="contact">Danh bạ</a>
             </Button>
 
-            {isLoggedAdmin() && (
-              <>
-                <Divider orientation="vertical" flexItem variant="middle" />
-                <Button className="menu__button">
-                  <a
-                    href="http://localhost:3001"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Quản trị
-                  </a>
-                </Button>
-              </>
-            )}
+            <Divider orientation="vertical" flexItem variant="middle" />
+            <Button className="menu__button">
+              <a href="http://localhost:3001" rel="noreferrer" target="_blank">
+                Quản trị
+              </a>
+            </Button>
           </div>
           <Search>
             <SearchIconWrapper>
