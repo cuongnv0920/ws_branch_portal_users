@@ -22,7 +22,6 @@ import {
   TextareaField,
   UploadField,
 } from "../../../../components/inputField";
-import "./styles.scss";
 
 CreateFormNews.propTypes = {
   onSubmit: PropTypes.func,

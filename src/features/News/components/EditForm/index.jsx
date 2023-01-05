@@ -22,7 +22,6 @@ import {
   TextareaField,
   UploadField,
 } from "../../../../components/inputField";
-import "./styles.scss";
 
 EditForm.propTypes = {
   onSubmit: PropTypes.func,
