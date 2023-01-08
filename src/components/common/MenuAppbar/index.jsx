@@ -74,6 +74,7 @@ export function MenuAppbar(props) {
   const [openLinkMenu, setOpenLinkMenu] = useState(null);
   const [categorys, setCategorys] = useState([]);
   const [links, setLinks] = useState([]);
+
   const dispatch = useDispatch();
 
   const handleOpenCategoryMenu = (event) => {

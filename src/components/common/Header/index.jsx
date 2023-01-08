@@ -25,6 +25,7 @@ import Register from "../../../features/Auth/component/Register";
 import logoHeader from "../../../images/logo-header.png";
 import branch from "../../../configs/branch.conf";
 import "./styles.scss";
+import Setting from "../../../features/Auth/component/Setting";
 
 Header.propTypes = {};
 
@@ -32,16 +33,21 @@ export function Header(props) {
   const logged = useSelector((state) => state.auth.current);
   const isLogged = !!logged._id;
 
-  const [openAuth, setOpenAth] = useState(false);
+  const [openAuth, setOpenAuth] = useState(false);
+  const [openSetting, setOpenSetting] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const dispatch = useDispatch();
 
-  const handleOpenAth = () => {
-    setOpenAth(true);
+  const handleOpenAuth = () => {
+    setOpenAuth(true);
   };
-  const handleCloseAth = () => {
-    setOpenAth(false);
+  const handleCloseAuth = () => {
+    setOpenAuth(false);
+  };
+
+  const handleCloseSetting = () => {
+    setOpenSetting(false);
   };
 
   const handleOpenMenu = (event) => {
@@ -49,6 +55,8 @@ export function Header(props) {
   };
   const handleCloseMenu = () => {
     setAnchorEl(null);
+
+    setOpenSetting(true);
   };
   const handleLogout = () => {
     const action = logout();
@@ -70,7 +78,7 @@ export function Header(props) {
           </Typography>
 
           {!isLogged && (
-            <button onClick={handleOpenAth} className="appbar__button">
+            <button onClick={handleOpenAuth} className="appbar__button">
               Đăng nhập
             </button>
           )}
@@ -145,7 +153,7 @@ export function Header(props) {
         open={openAuth}
         onClose={(event, reason) => {
           if (reason !== "backdropClick") {
-            handleCloseAth(event, reason);
+            handleCloseAuth(event, reason);
           }
         }}
       >
@@ -157,15 +165,35 @@ export function Header(props) {
             </TabList>
 
             <TabPanel>
-              <Login closeDialog={handleCloseAth} />
+              <Login closeDialog={handleCloseAuth} />
             </TabPanel>
             <TabPanel>
-              <Register closeDialog={handleCloseAth} />
+              <Register closeDialog={handleCloseAuth} />
             </TabPanel>
           </Tabs>
         </DialogContent>
         <DialogActions className="dialogAction">
-          <Button className="dialogButtonCancel" onClick={handleCloseAth}>
+          <Button className="dialogButtonCancel" onClick={handleCloseAuth}>
+            Thoát
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        fullWidth="xs"
+        maxWidth="xs"
+        open={openSetting}
+        onClose={(event, reason) => {
+          if (reason !== "backdropClick") {
+            handleCloseSetting(event, reason);
+          }
+        }}
+      >
+        <DialogContent>
+          <Setting closeDialog={handleCloseSetting} />
+        </DialogContent>
+        <DialogActions className="dialogAction">
+          <Button className="dialogButtonCancel" onClick={handleCloseSetting}>
             Thoát
           </Button>
         </DialogActions>

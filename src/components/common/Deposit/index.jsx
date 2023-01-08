@@ -7,6 +7,7 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import Moment from "react-moment";
 import { depositApi } from "../../../api";
 import "./styles.scss";
 
@@ -30,7 +31,17 @@ function Deposit(props) {
   return (
     <div className="deposit">
       <h3 className="deposit__title">Lãi suất tiền gửi</h3>
-      <h5 className="deposit__notification">Hiệu lực ngày: 04/01/2023</h5>
+      <h5 className="deposit__notification">
+        <span>Ngày hiệu lực: </span>
+        {deposits.map(
+          (deposit, index) =>
+            index === 0 && (
+              <Moment style={{ color: "#f50057" }} format="DD/MM/YYYY">
+                {deposit.effect}
+              </Moment>
+            )
+        )}
+      </h5>
       <TableContainer sx={{ maxHeight: 535 }}>
         <Table stickyHeader className="deposit__table table">
           <TableHead className="table__head head">

@@ -169,7 +169,7 @@ function FeaturedNews(props) {
   return (
     <div className="featuredNews">
       {loading ? (
-        <SkeletonNews title="Thông tin nổi bật" length={2} />
+        <SkeletonNews title="Thông tin nổi bật" length={3} />
       ) : (
         <>
           <div className="featuredNews__title title-news">
