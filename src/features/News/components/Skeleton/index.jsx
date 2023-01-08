@@ -22,7 +22,7 @@ function SkeletonNews(props) {
 
       <div className="ckeleton__content content">
         {Array.from(new Array(length)).map((x, index) => (
-          <div key={index} className="ckeleton__card">
+          <div key={index} className="content__card">
             <Skeleton />
             <Skeleton animation="wave" />
             <Skeleton animation={false} />

@@ -158,7 +158,7 @@ function News(props) {
       <FeaturedNews />
       <div className="news">
         {loading ? (
-          <SkeletonNews title="Thông tin chung" length={10} />
+          <SkeletonNews title="Thông tin chung" length={8} />
         ) : (
           <>
             <NewsList

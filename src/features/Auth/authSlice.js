@@ -26,17 +26,17 @@ export const login = createAsyncThunk("user/login", async (payload) => {
   return data.user;
 });
 
-// export const setting = createAsyncThunk("user/setting", async (payload) => {
-//   // call API to setting user
-//   const data = await authApi.update(payload);
+export const setting = createAsyncThunk("user/update", async (payload) => {
+  // call API to setting user
+  const data = await authApi.update(payload);
 
-//   // save data to local storage
-//   localStorage.getItem(StorageKeys.TOKEN, data.jwt);
-//   localStorage.getItem(StorageKeys.USER, JSON.stringify(data.user));
+  // save data to local storage
+  localStorage.getItem(StorageKeys.TOKEN, data.jwt);
+  localStorage.getItem(StorageKeys.USER, JSON.stringify(data.user));
 
-//   // return user data
-//   return data.user;
-// });
+  // return user data
+  return data.user;
+});
 
 const userSlice = createSlice({
   name: "auth",
