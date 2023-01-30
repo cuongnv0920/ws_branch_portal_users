@@ -6,28 +6,8 @@ const configJson = {
 };
 
 export const authApi = {
-  create(data) {
-    const url = "/user/create";
-    return axiosClient.post(url, data, configJson);
-  },
-
-  getAll(data) {
-    const url = "/user/getAll";
-    return axiosClient.get(url, data, configJson);
-  },
-
-  update(data) {
-    const url = `/user/update/${data.id}`;
-    return axiosClient.put(url, data, configJson);
-  },
-
-  delete(data) {
-    const url = `/user/delete/${data.id}`;
-    return axiosClient.put(url, data, configJson);
-  },
-
   login(data) {
-    const url = "/user/login";
+    const url = "/auth/login";
     return axiosClient.post(url, data, configJson);
   },
 };

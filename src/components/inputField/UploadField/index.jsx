@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
+import PropTypes from "prop-types";
+import React from "react";
+import { Controller } from "react-hook-form";
 
 UploadField.propTypes = {
   form: PropTypes.object.isRequired,
@@ -27,9 +27,6 @@ export function UploadField(props) {
           InputLabelProps={{
             shrink: true,
           }}
-          // inputProps={{
-          //   multiple: true,
-          // }}
           type="file"
           margin="normal"
           variant="outlined"

@@ -25,8 +25,13 @@ function Deposit(props) {
         console.log(error);
       }
     };
-    fetchDeposits();
-  }, []);
+
+    const timer = setTimeout(() => {
+      fetchDeposits();
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [deposits]);
 
   return (
     <div className="deposit">

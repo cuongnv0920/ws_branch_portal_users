@@ -17,6 +17,7 @@ import { Box, Container } from "@mui/system";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { categoryApi, linkApi } from "../../../api";
+import location from "../../../configs/location.conf";
 import {
   filterCategory,
   filterSearchTerm,
@@ -219,12 +220,12 @@ export function MenuAppbar(props) {
 
             <Divider orientation="vertical" flexItem variant="middle" />
             <Button className="menu__button">
-              <a href="contact">Danh bạ</a>
+              <a href={`${location.userLocation}/contact`}>Danh bạ</a>
             </Button>
 
             <Divider orientation="vertical" flexItem variant="middle" />
             <Button className="menu__button">
-              <a href="http://localhost:3001" rel="noreferrer" target="_blank">
+              <a href={location.adminLocation} rel="noreferrer" target="_blank">
                 Quản trị
               </a>
             </Button>

@@ -31,8 +31,7 @@ export const setting = createAsyncThunk("user/update", async (payload) => {
   const data = await authApi.update(payload);
 
   // save data to local storage
-  localStorage.getItem(StorageKeys.TOKEN, data.jwt);
-  localStorage.getItem(StorageKeys.USER, JSON.stringify(data.user));
+  localStorage.setItem(StorageKeys.USER, JSON.stringify(data.user));
 
   // return user data
   return data.user;
@@ -54,6 +53,10 @@ const userSlice = createSlice({
   },
   extraReducers: {
     [register.fulfilled]: (state, action) => {
+      state.current = action.payload;
+    },
+
+    [setting.fulfilled]: (state, action) => {
       state.current = action.payload;
     },
 
