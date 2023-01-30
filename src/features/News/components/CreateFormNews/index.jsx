@@ -90,7 +90,7 @@ function CreateFormNews(props) {
     <div className="createNews">
       <div className="createNews__title dialogTitle">
         <Typography className="dialogTitle_content">
-          Thêm bài viết Thông báo chung
+          Thêm bài viết Thông tin chung
         </Typography>
       </div>
 

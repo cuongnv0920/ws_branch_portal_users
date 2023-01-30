@@ -22,8 +22,13 @@ export function ExchangeRate(props) {
       const exchangeRates = await exchangeRateApi.getAll();
       setExchangeRates(exchangeRates);
     };
-    fetchExchangeRates();
-  }, []);
+
+    const timer = setTimeout(() => {
+      fetchExchangeRates();
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [exchangeRates]);
 
   useEffect(() => {
     const fetchMargins = async () => {
