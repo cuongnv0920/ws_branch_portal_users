@@ -1,21 +1,16 @@
 .footer {
-  background-color: #343a40;
-
-  &__border {
-    height: 150px;
-    background-color: aqua;
-    border-radius: 1000px 1000px 0px 0px;
-  }
+  background: -webkit-linear-gradient(to right, #4caf50, #ffcd38);
+  background: linear-gradient(45deg, #4caf50 10%, #ffcd38 90%);
 
   &__title {
     margin: 0;
-    color: #737373;
+    color: #47544d;
     font-size: 1.2rem;
   }
 
   &__copyright {
     margin: 0;
-    color: #737373 !important;
+    color: #47544d !important;
     font-size: 1rem;
   }
 }
@@ -25,10 +20,10 @@
     background-color: #f8f8f8 !important;
   }
   &__listIcon svg {
-    color: #737373;
+    color: #47544d;
   }
   &__listText span {
-    color: #737373;
+    color: #47544d;
     font-size: 0.9rem;
   }
 }
