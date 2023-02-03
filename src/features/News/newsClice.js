@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { newsApi } from "../../api";
+import { newsApi } from "api";
 
 export const create = createAsyncThunk("news/create", async (payload) => {
   const data = await newsApi.create(payload);

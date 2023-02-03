@@ -1,5 +1,4 @@
-import React from "react";
-import DetailNews from "../../components/DetailNews";
+import DetailNews from "features/Detail/components/DetailNews";
 
 ListPage.propTypes = {};
 

@@ -1,9 +1,8 @@
-import React from "react";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { edit } from "features/News/newsClice";
+import { useSnackbar } from "notistack";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { useSnackbar } from "notistack";
-import { edit } from "../../newsClice";
-import { unwrapResult } from "@reduxjs/toolkit";
 import EditForm from "../EditForm";
 
 Edit.propTypes = {

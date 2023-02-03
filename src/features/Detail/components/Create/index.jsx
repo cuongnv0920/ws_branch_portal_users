@@ -1,9 +1,8 @@
 import { unwrapResult } from "@reduxjs/toolkit";
+import { create } from "features/Detail/commentClice";
 import { useSnackbar } from "notistack";
-import React from "react";
-import { useDispatch } from "react-redux";
-import { create } from "../../commentClice";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
 import CreateForm from "../CreateFrom";
 
 Create.propTypes = {

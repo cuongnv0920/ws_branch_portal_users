@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
 
-Input.propTypes = {
+InputField.propTypes = {
   form: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
 
@@ -11,7 +11,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
 };
 
-export function Input(props) {
+export function InputField(props) {
   const { form, name, label, disabled, inputProps } = props;
   const { control } = form;
 

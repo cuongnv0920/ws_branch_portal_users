@@ -10,10 +10,10 @@ import {
 } from "@mui/material";
 
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Controller } from "react-hook-form";
 
-Password.propTypes = {
+PasswordField.propTypes = {
   form: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
 
@@ -21,7 +21,7 @@ Password.propTypes = {
   disabled: PropTypes.bool,
 };
 
-export function Password(props) {
+export function PasswordField(props) {
   const { form, name, label, disabled } = props;
   const { control } = form;
 

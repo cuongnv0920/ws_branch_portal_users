@@ -6,17 +6,17 @@ import {
   Pagination,
   Stack,
 } from "@mui/material";
+import { newsApi } from "api";
+import { getEdit, removeGetEdit } from "features/News/newsClice";
 import { useSnackbar } from "notistack";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { newsApi } from "../../../../api";
 import CreateNews from "../../components/CreateNews";
 import Delete from "../../components/Delete";
 import Edit from "../../components/Edit";
 import FeaturedNews from "../../components/FeaturedNews";
 import NewsList from "../../components/NewsList";
 import SkeletonNews from "../../components/Skeleton";
-import { getEdit, removeGetEdit } from "../../newsClice";
 
 News.propTypes = {};
 

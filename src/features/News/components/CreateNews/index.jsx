@@ -1,10 +1,9 @@
-import React from "react";
-import CreateFormNews from "../CreateFormNews";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { create } from "features/News/newsClice";
+import { useSnackbar } from "notistack";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { useSnackbar } from "notistack";
-import { create } from "../../newsClice";
-import { unwrapResult } from "@reduxjs/toolkit";
+import CreateFormNews from "../CreateFormNews";
 
 CreateNews.propTypes = {
   closeDialog: PropTypes.func,

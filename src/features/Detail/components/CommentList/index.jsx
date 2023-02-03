@@ -9,12 +9,12 @@ import {
   IconButton,
 } from "@mui/material";
 import { Stack } from "@mui/system";
+import { commentApi } from "api";
+import { getEdit, removeGetEdit } from "features/Detail/commentClice";
 import { useSnackbar } from "notistack";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { commentApi } from "../../../../api";
-import { getEdit, removeGetEdit } from "../../commentClice";
 import Delete from "../Delete";
 import Edit from "../Edit";
 import "./styles.scss";

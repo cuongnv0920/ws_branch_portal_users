@@ -8,18 +8,18 @@ import {
   Radio,
   Typography,
 } from "@mui/material";
-import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { levelApi, roomApi } from "../../../../api/index";
+import { levelApi, roomApi } from "api";
 import {
   DateField,
-  Input,
-  Password,
+  InputField,
+  PasswordField,
   RadioField,
   SelectField,
-} from "../../../../components/inputField/index";
+} from "components/inputField";
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
 
 RegisterForm.propTypes = {
   onSubmit: PropTypes.func,
@@ -107,10 +107,14 @@ function RegisterForm(props) {
         </Typography>
       </div>
       <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <Input name="fullName" label="Họ và tên" form={form} />
-        <Input name="email" label="Email" form={form} />
-        <Password name="password" label="Mật khẩu" form={form} />
-        <Password name="retypePassword" label="Xác nhận mật khẩu" form={form} />
+        <InputField name="fullName" label="Họ và tên" form={form} />
+        <InputField name="email" label="Email" form={form} />
+        <PasswordField name="password" label="Mật khẩu" form={form} />
+        <PasswordField
+          name="retypePassword"
+          label="Xác nhận mật khẩu"
+          form={form}
+        />
         <SelectField name="room" label="Phòng/ ban" form={form}>
           {rooms.map((room, _) => (
             <MenuItem value={room.id}>{room.name}</MenuItem>
@@ -121,8 +125,8 @@ function RegisterForm(props) {
             <MenuItem value={level.id}>{level.name}</MenuItem>
           ))}
         </SelectField>
-        <Input name="phone" label="Số điện thoại di động" form={form} />
-        <Input name="ext" label="Số điện thoại nội bộ" form={form} />
+        <InputField name="phone" label="Số điện thoại di động" form={form} />
+        <InputField name="ext" label="Số điện thoại nội bộ" form={form} />
         <Grid container spacing={2}>
           <Grid item xs={6} md={6} sm={6} sx={{ marginTop: "8px" }}>
             <RadioField

@@ -6,9 +6,9 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { depositApi } from "api";
+import { useEffect, useState } from "react";
 import Moment from "react-moment";
-import { depositApi } from "../../../api";
 import "./styles.scss";
 
 Deposit.propTypes = {};

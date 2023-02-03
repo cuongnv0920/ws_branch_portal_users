@@ -1,10 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import EditForm from "../EditForm";
-import { useDispatch } from "react-redux";
-import { useSnackbar } from "notistack";
-import { edit } from "../../commentClice";
 import { unwrapResult } from "@reduxjs/toolkit";
+import { edit } from "features/Detail/commentClice";
+import { useSnackbar } from "notistack";
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import EditForm from "../EditForm";
 
 Edit.propTypes = {
   closeDialog: PropTypes.func,

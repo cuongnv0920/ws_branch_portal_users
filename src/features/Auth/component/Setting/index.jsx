@@ -1,9 +1,8 @@
 import { unwrapResult } from "@reduxjs/toolkit";
+import { setting } from "features/Auth/authSlice";
 import { useSnackbar } from "notistack";
 import PropTypes from "prop-types";
-import React from "react";
 import { useDispatch } from "react-redux";
-import { setting } from "../../authSlice";
 import SettingForm from "../SettingForm";
 
 Setting.propTypes = {

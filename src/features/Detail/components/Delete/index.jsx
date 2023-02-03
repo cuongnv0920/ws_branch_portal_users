@@ -1,9 +1,8 @@
 import { unwrapResult } from "@reduxjs/toolkit";
+import { deleted } from "features/Detail/commentClice";
 import { useSnackbar } from "notistack";
 import PropTypes from "prop-types";
-import React from "react";
 import { useDispatch } from "react-redux";
-import { deleted } from "../../commentClice";
 import DeleteForm from "../DeleteForm";
 
 Delete.propTypes = {

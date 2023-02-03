@@ -8,16 +8,16 @@ import {
   Grid,
   Link,
 } from "@mui/material";
+import { commentApi } from "api";
+import api from "configs/api.conf";
+import branch from "configs/branch.conf";
+import useNewsDetail from "features/Detail/hooks/useNewsDetail";
 import parse from "html-react-parser";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Moment from "react-moment";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { commentApi } from "../../../../api";
-import api from "../../../../configs/api.conf";
-import branch from "../../../../configs/branch.conf";
 import logo from "../../../../images/logo-header.png";
-import useNewsDetail from "../../hooks/useNewsDetail";
 import CommentList from "../CommentList";
 import Create from "../Create";
 import "./styles.scss";

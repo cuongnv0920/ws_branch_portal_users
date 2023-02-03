@@ -14,10 +14,10 @@ import {
 import InputBase from "@mui/material/InputBase";
 import { alpha, styled } from "@mui/material/styles";
 import { Box, Container } from "@mui/system";
-import React, { useEffect, useRef, useState } from "react";
+import { categoryApi, linkApi } from "api";
+import location from "configs/location.conf";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { categoryApi, linkApi } from "../../../api";
-import location from "../../../configs/location.conf";
 import {
   filterCategory,
   filterSearchTerm,
