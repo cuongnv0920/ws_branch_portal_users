@@ -1,3 +1,5 @@
+import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import {
   Grid,
   IconButton,
@@ -7,10 +9,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import { Box, Container } from "@mui/system";
-import React from "react";
-import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
-import branch from "../../../configs/branch.conf";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import branch from "configs/branch.conf";
 import "./styles.scss";
 
 Footer.propTypes = {};

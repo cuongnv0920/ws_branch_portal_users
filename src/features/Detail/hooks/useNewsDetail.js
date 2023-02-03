@@ -1,5 +1,5 @@
+import { newsApi } from "api";
 import { useEffect, useState } from "react";
-import { newsApi } from "../../../api";
 
 export default function useNewsDetail(id) {
   const [loading, setLoading] = useState(true);

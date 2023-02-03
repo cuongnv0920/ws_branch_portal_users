@@ -1,5 +1,5 @@
-import axiosClient from "../axios.Client";
-import contentType from "../../configs/contentType.conf";
+import axiosClient from "api/axios.Client";
+import contentType from "configs/contentType.conf";
 
 const configJson = {
   headers: contentType.headersJson,

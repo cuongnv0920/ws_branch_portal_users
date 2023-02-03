@@ -15,8 +15,8 @@ import {
   ListItemText,
   ListSubheader,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { userApi } from "../../../../api";
+import { userApi } from "api";
+import { useEffect, useState } from "react";
 import ContactFilter from "../ContactFilters";
 import SkeletonContact from "../Skeleton";
 import "./styles.scss";

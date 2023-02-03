@@ -1,6 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
-import { showBirthday } from "../../../utils";
+import { showBirthday } from "utils";
 import "./styles.scss";
 
 Birthday.propTypes = {

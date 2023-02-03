@@ -1,10 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, CircularProgress, Typography } from "@mui/material";
+import { InputField, PasswordField } from "components/inputField";
 import PropTypes from "prop-types";
-import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { Input, Password } from "../../../../components/inputField";
 
 LoginForm.propTypes = {
   onSubmit: PropTypes.func,
@@ -41,8 +40,8 @@ function LoginForm(props) {
       </div>
 
       <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <Input name="username" label="Tên đăng nhập" form={form} />
-        <Password name="password" label="Mật khẩu" form={form} />
+        <InputField name="username" label="Tên đăng nhập" form={form} />
+        <PasswordField name="password" label="Mật khẩu" form={form} />
 
         <Button
           className="dialogButtonSave"

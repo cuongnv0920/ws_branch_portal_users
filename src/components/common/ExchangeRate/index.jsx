@@ -6,9 +6,9 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { exchangeRateApi, marginApi } from "../../../api";
-import api from "../../../configs/api.conf";
+import { exchangeRateApi, marginApi } from "api";
+import api from "configs/api.conf";
+import { useEffect, useState } from "react";
 import "./styles.scss";
 
 ExchangeRate.propTypes = {};

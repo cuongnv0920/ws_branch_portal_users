@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { roomApi } from "../../../../api";
+import FolderIcon from "@mui/icons-material/Folder";
 import {
   List,
   ListItemButton,
@@ -8,7 +6,9 @@ import {
   ListItemText,
   ListSubheader,
 } from "@mui/material";
-import FolderIcon from "@mui/icons-material/Folder";
+import { roomApi } from "api";
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import "./styles.scss";
 
 FilterByRoom.propTypes = {

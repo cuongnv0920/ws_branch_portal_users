@@ -8,6 +8,11 @@ import {
   Paper,
 } from "@mui/material";
 import { Box, Container } from "@mui/system";
+import Deposit from "components/common/Deposit";
+import Footer from "components/common/Footer";
+import Contact from "features/Contact";
+import Detail from "features/Detail";
+import News from "features/News";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -18,11 +23,6 @@ import {
   Header,
   MenuAppbar,
 } from "./components/common";
-import Deposit from "./components/common/Deposit";
-import Footer from "./components/common/Footer";
-import Contact from "./features/Contact";
-import Detail from "./features/Detail";
-import News from "./features/News";
 import { showBirthday } from "./utils";
 
 function App() {
@@ -91,7 +91,7 @@ function App() {
       <Divider />
       <MenuAppbar />
       <Box className="main">
-        <Container>
+        <Container sx={{ minHeight: "100vh" }}>
           <Grid container spacing={2}>
             <Grid item xs={12} md={7} sm={12}>
               <Routes>

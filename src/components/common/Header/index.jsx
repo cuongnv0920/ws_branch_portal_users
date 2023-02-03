@@ -1,3 +1,6 @@
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import Logout from "@mui/icons-material/Logout";
+import Settings from "@mui/icons-material/Settings";
 import {
   Box,
   Button,
@@ -12,20 +15,17 @@ import {
   Typography,
 } from "@mui/material";
 import { Container } from "@mui/system";
-import React, { useState } from "react";
+import branch from "configs/branch.conf";
+import { logout } from "features/Auth/authSlice";
+import Login from "features/Auth/component/Login";
+import Register from "features/Auth/component/Register";
+import Setting from "features/Auth/component/Setting";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import Logout from "@mui/icons-material/Logout";
-import Settings from "@mui/icons-material/Settings";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import "react-tabs/style/react-tabs.css";
-import { logout } from "../../../features/Auth/authSlice";
-import Login from "../../../features/Auth/component/Login";
-import Register from "../../../features/Auth/component/Register";
 import logoHeader from "../../../images/logo-header.png";
-import branch from "../../../configs/branch.conf";
 import "./styles.scss";
-import Setting from "../../../features/Auth/component/Setting";
 
 Header.propTypes = {};
 

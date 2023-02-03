@@ -8,20 +8,20 @@ import {
   Radio,
   Typography,
 } from "@mui/material";
-import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
-import * as yup from "yup";
-import { categoryApi } from "../../../../api";
+import { categoryApi } from "api";
 import {
   CKEditorField,
-  Input,
+  InputField,
   RadioField,
   SelectField,
   TextareaField,
   UploadField,
-} from "../../../../components/inputField";
+} from "components/inputField";
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import * as yup from "yup";
 
 CreateFormNews.propTypes = {
   onSubmit: PropTypes.func,
@@ -97,7 +97,7 @@ function CreateFormNews(props) {
       <form onSubmit={form.handleSubmit(handleSubmit)}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6} sm={12}>
-            <Input name="title" label="Tiêu đề" form={form} />
+            <InputField name="title" label="Tiêu đề" form={form} />
           </Grid>
           <Grid item xs={12} md={6} sm={12}>
             <SelectField name="category" label="Danh mục" form={form}>
@@ -131,7 +131,7 @@ function CreateFormNews(props) {
             </SelectField>
           </Grid>
           <Grid item xs={12} md={6} sm={12}>
-            <Input name="code" label="Số văn bản" form={form} />
+            <InputField name="code" label="Số văn bản" form={form} />
           </Grid>
         </Grid>
 

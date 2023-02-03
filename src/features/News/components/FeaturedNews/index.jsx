@@ -13,14 +13,14 @@ import {
   Pagination,
   Stack,
 } from "@mui/material";
+import { newsApi } from "api";
+import api from "configs/api.conf";
+import { getEdit, removeGetEdit } from "features/News/newsClice";
 import { useSnackbar } from "notistack";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Moment from "react-moment";
 import { useDispatch, useSelector } from "react-redux";
-import { newsApi } from "../../../../api";
-import api from "../../../../configs/api.conf";
-import { showType } from "../../../../utils";
-import { getEdit, removeGetEdit } from "../../newsClice";
+import { showType } from "utils";
 import CreateFeaturedNews from "../CreateFeaturedNews";
 import Delete from "../Delete";
 import Edit from "../Edit";

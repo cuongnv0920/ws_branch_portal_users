@@ -1,9 +1,15 @@
 .footer {
-  background-color: #26272b;
+  background-color: #343a40;
+
+  &__border {
+    height: 150px;
+    background-color: aqua;
+    border-radius: 1000px 1000px 0px 0px;
+  }
 
   &__title {
     margin: 0;
-    color: #f8f8f8;
+    color: #737373;
     font-size: 1.2rem;
   }
 
@@ -16,13 +22,13 @@
 
 .listFooter {
   &__iconButton {
-    background-color: #737373 !important;
+    background-color: #f8f8f8 !important;
   }
   &__listIcon svg {
-    color: #f8f8f8;
+    color: #737373;
   }
   &__listText span {
-    color: #f8f8f8;
+    color: #737373;
     font-size: 0.9rem;
   }
 }

@@ -1,13 +1,12 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Avatar, Button, CircularProgress } from "@mui/material";
 import { Stack } from "@mui/system";
+import { InputField } from "components/inputField";
 import PropTypes from "prop-types";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import * as yup from "yup";
-import { Input } from "../../../../components/inputField/index";
 import "./styles.scss";
 
 CreateForm.propTypes = {
@@ -55,7 +54,7 @@ function CreateForm(props) {
           >
             {avatar}
           </Avatar>
-          <Input
+          <InputField
             name="content"
             label="Bình luận..."
             form={form}

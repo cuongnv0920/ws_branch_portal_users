@@ -1,6 +1,6 @@
-import { authApi } from "../../api";
-import StorageKeys from "../../configs/StorageKeys.conf";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { authApi } from "api";
+import StorageKeys from "configs/StorageKeys.conf";
 
 export const register = createAsyncThunk("user/create", async (payload) => {
   // call API to register

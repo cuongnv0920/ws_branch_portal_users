@@ -3,12 +3,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import DiscountIcon from "@mui/icons-material/Discount";
 import EditIcon from "@mui/icons-material/Edit";
 import { Chip, Divider, IconButton, Stack } from "@mui/material";
+import api from "configs/api.conf";
 import PropTypes from "prop-types";
-import React from "react";
 import Moment from "react-moment";
 import { useSelector } from "react-redux";
-import api from "../../../../configs/api.conf";
-import { showType } from "../../../../utils";
+import { showType } from "utils";
 import "./styles.scss";
 
 NewsList.propTypes = {
