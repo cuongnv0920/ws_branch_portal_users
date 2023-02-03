@@ -210,7 +210,7 @@ export function MenuAppbar(props) {
                   <ListItem disablePadding>
                     <ListItemButton>
                       <Link href={link.url} target="_blank">
-                        {link.title}
+                        {link.name}
                       </Link>
                     </ListItemButton>
                   </ListItem>
