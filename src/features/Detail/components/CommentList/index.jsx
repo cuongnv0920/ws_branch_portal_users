@@ -159,8 +159,7 @@ function CommentList(props) {
       </Dialog>
 
       <Dialog
-        fullWidth="xs"
-        maxWidth="xs"
+        maxWidth="lg"
         open={openDialogDelete}
         onClose={(event, reason) => {
           if (reason !== "backdropClick") {
