@@ -1,10 +1,9 @@
 .footer {
-  background: -webkit-linear-gradient(to right, #4caf50, #ffcd38);
-  background: linear-gradient(45deg, #4caf50 10%, #ffcd38 90%);
+  background: linear-gradient(45deg, #4caf50 20%, #ffcd38 90%);
 
   &__title {
     margin: 0;
-    color: #47544d;
+    color: #1c2e36;
     font-size: 1.2rem;
   }
 
@@ -23,7 +22,7 @@
     color: #47544d;
   }
   &__listText span {
-    color: #47544d;
+    color: #1c2e36;
     font-size: 0.9rem;
   }
 }

@@ -365,8 +365,7 @@ function FeaturedNews(props) {
       </Dialog>
 
       <Dialog
-        fullWidth="sm"
-        maxWidth="sm"
+        maxWidth="lg"
         open={openDialogDelete}
         onClose={(event, reason) => {
           if (reason !== "backdropClick") {
