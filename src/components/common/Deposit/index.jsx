@@ -28,7 +28,7 @@ function Deposit(props) {
 
     const timer = setTimeout(() => {
       fetchDeposits();
-    }, 5000);
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [deposits]);
