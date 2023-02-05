@@ -25,7 +25,7 @@ export function ExchangeRate(props) {
 
     const timer = setTimeout(() => {
       fetchExchangeRates();
-    }, 5000);
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [exchangeRates]);

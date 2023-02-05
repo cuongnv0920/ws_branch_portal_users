@@ -47,7 +47,7 @@ function Footer(props) {
                 </ListItem>
               </List>
             </Grid>
-            <Grid item md={2} xs={12} sm={12}>
+            <Grid item md={2} xs={12} sm={12} sx={{ textAlign: "center" }}>
               <h5 className="footer__copyright">Copyright © 2022</h5>
             </Grid>
           </Grid>
