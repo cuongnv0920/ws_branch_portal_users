@@ -70,7 +70,12 @@ export function Header(props) {
       <Container maxWidth="xl">
         <Toolbar className="appbar__toolbar">
           <a href="/" className="appbar__link">
-            <img src={logoHeader} alt="logo header" className="appbar__logo" />
+            <img
+              src={logoHeader}
+              alt="logo header"
+              title="Trang chủ"
+              className="appbar__logo"
+            />
           </a>
 
           <Typography className="appbar__title">
@@ -91,7 +96,7 @@ export function Header(props) {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenMenu}
-                title="User"
+                title="Người dùng"
               >
                 <AccountCircle />
               </IconButton>
