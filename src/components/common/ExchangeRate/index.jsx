@@ -1,4 +1,5 @@
 import {
+  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -9,6 +10,7 @@ import {
 import { exchangeRateApi, marginApi } from "api";
 import api from "configs/api.conf";
 import { useEffect, useState } from "react";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import "./styles.scss";
 
 ExchangeRate.propTypes = {};
@@ -54,7 +56,13 @@ export function ExchangeRate(props) {
 
   return (
     <div className="exchangeRate">
-      <h3 className="exchangeRate__title">Tỷ giá ngoại tệ</h3>
+      <div className="exchangeRate__header">
+        <h3 className="exchangeRate__title">Tỷ giá ngoại tệ</h3>
+        <IconButton title="Xuất file PDF" className="exchangeRate__iconButton">
+          <FileDownloadIcon className="exchangeRate__icon" />
+        </IconButton>
+      </div>
+
       {exchangeRates.map(
         (exchangeRate, index) =>
           index === 0 && (
