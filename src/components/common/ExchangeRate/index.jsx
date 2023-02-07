@@ -1,3 +1,4 @@
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import {
   IconButton,
   Table,
@@ -9,8 +10,8 @@ import {
 } from "@mui/material";
 import { exchangeRateApi, marginApi } from "api";
 import api from "configs/api.conf";
+import { jsPDF } from "jspdf";
 import { useEffect, useState } from "react";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import "./styles.scss";
 
 ExchangeRate.propTypes = {};
@@ -18,6 +19,17 @@ ExchangeRate.propTypes = {};
 export function ExchangeRate(props) {
   const [exchangeRates, setExchangeRates] = useState([]);
   const [margins, setMarrgins] = useState([]);
+
+  const handleExportPDF = async () => {
+    const doc = new jsPDF("portrait", "pt", "a4");
+    alert(
+      "Chức năng chưa được hoàn thiện. Sẽ được cập nhật tại phiên bản sau."
+    );
+    // const data = await document.querySelector(".exchangeRate");
+    // doc.html(data).then(() => {
+    //   doc.save("deposit.pdf");
+    // });
+  };
 
   useEffect(() => {
     const fetchExchangeRates = async () => {
@@ -58,7 +70,11 @@ export function ExchangeRate(props) {
     <div className="exchangeRate">
       <div className="exchangeRate__header">
         <h3 className="exchangeRate__title">Tỷ giá ngoại tệ</h3>
-        <IconButton title="Xuất file PDF" className="exchangeRate__iconButton">
+        <IconButton
+          onClick={handleExportPDF}
+          title="Xuất file PDF"
+          className="exchangeRate__iconButton"
+        >
           <FileDownloadIcon className="exchangeRate__icon" />
         </IconButton>
       </div>
