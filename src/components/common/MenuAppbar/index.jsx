@@ -142,7 +142,7 @@ export function MenuAppbar(props) {
         <Toolbar variant="dense" className="menu__toolbar">
           <div className="menu__box">
             <Button className="menu__button">
-              <a href="/">Trang chủ</a>
+              <a href={location.userLocation}>Trang chủ</a>
             </Button>
 
             <Divider orientation="vertical" variant="middle" flexItem />
