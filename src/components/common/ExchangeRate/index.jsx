@@ -62,7 +62,8 @@ export function ExchangeRate(props) {
       currency: exchangeRate?.currency,
       buyCash: exchangeRate?.buyCash - margin?.buyCash || 0,
       buyTransfer: exchangeRate?.buyTransfer - margin?.buyTransfer || 0,
-      selling: exchangeRate?.selling - margin?.selling || 0,
+      selling: exchangeRate?.selling + margin?.selling || 0,
+      status: margin?.status,
     };
   });
 
@@ -108,29 +109,36 @@ export function ExchangeRate(props) {
           </TableHead>
 
           <TableBody className="table__body body">
-            {rows.map((row, index) => (
-              <TableRow className="body__row">
-                <TableCell component="th" scope="row" className="body__cell">
-                  <div className="body__currency">
-                    <img
-                      src={api.URL + "/" + row.ensign}
-                      alt="ensign"
-                      className="body__ensign"
-                    />
-                    <div>{row.currency}</div>
-                  </div>
-                </TableCell>
-                <TableCell className="body__cell">
-                  {row.buyCash.toLocaleString()}
-                </TableCell>
-                <TableCell className="body__cell">
-                  {row.buyTransfer.toLocaleString()}
-                </TableCell>
-                <TableCell className="body__cell">
-                  {row.selling.toLocaleString()}
-                </TableCell>
-              </TableRow>
-            ))}
+            {rows.map(
+              (row, _) =>
+                row.status === true && (
+                  <TableRow className="body__row">
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      className="body__cell"
+                    >
+                      <div className="body__currency">
+                        <img
+                          src={api.URL + "/" + row.ensign}
+                          alt="ensign"
+                          className="body__ensign"
+                        />
+                        <div>{row.currency}</div>
+                      </div>
+                    </TableCell>
+                    <TableCell className="body__cell">
+                      {row.buyCash.toLocaleString()}
+                    </TableCell>
+                    <TableCell className="body__cell">
+                      {row.buyTransfer.toLocaleString()}
+                    </TableCell>
+                    <TableCell className="body__cell">
+                      {row.selling.toLocaleString()}
+                    </TableCell>
+                  </TableRow>
+                )
+            )}
           </TableBody>
         </Table>
       </TableContainer>
