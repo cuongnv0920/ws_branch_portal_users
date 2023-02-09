@@ -20,7 +20,7 @@ export function Birthday(props) {
   return (
     <div className="birthday">
       <div className="birthday__content">
-        <h2 className="birthday__title">Chúc mứng sinh nhật</h2>
+        <h2 className="birthday__title">Chúc mừng sinh nhật</h2>
         {showBirthday(birthdays).map((user, index) => (
           <h4>{`${convertSex(user.sex)}: ${user.fullName} - ${
             user.room.name
