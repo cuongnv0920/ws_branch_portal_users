@@ -12,6 +12,7 @@ import { exchangeRateApi, marginApi } from "api";
 import api from "configs/api.conf";
 import { jsPDF } from "jspdf";
 import { useEffect, useState } from "react";
+import Times from "../../../fonts/times.ttf";
 import "./styles.scss";
 
 ExchangeRate.propTypes = {};
@@ -22,13 +23,12 @@ export function ExchangeRate(props) {
 
   const handleExportPDF = async () => {
     const doc = new jsPDF("portrait", "pt", "a4");
-    alert(
-      "Chức năng chưa được hoàn thiện. Sẽ được cập nhật tại phiên bản sau."
-    );
-    // const data = await document.querySelector(".exchangeRate");
-    // doc.html(data).then(() => {
-    //   doc.save("deposit.pdf");
-    // });
+    doc.addFont(Times, "Times", "normal");
+    doc.setFont("Times");
+    const data = await document.querySelector(".exchangeRate");
+    doc.html(data).then(() => {
+      doc.save("tygia.pdf");
+    });
   };
 
   useEffect(() => {
