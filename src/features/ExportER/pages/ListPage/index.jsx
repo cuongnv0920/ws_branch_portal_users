@@ -1,4 +1,4 @@
-import ContactList from "features/Contact/components/ContactList";
+import ExportERList from "features/ExportER/components/ExportERList";
 import React from "react";
 
 ListPage.propTypes = {};
@@ -6,7 +6,7 @@ ListPage.propTypes = {};
 function ListPage(props) {
   return (
     <div>
-      <ContactList />
+      <ExportERList />
     </div>
   );
 }

@@ -13,12 +13,10 @@
     flex-grow: 1;
   }
 
-  &__iconButton {
-    width: 46px !important;
-  }
-
-  &__icon {
-    color: #00a152;
+  &__link {
+    margin: 0px 8px !important;
+    padding: 10px 0px !important;
+    color: #f50057 !important;
   }
 
   &__notification {
