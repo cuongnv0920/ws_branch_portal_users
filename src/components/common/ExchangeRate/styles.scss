@@ -16,6 +16,11 @@
   &__link {
     margin: 0px 8px !important;
     padding: 10px 0px !important;
+    color: #00a152 !important;
+    transition: 0.3s all;
+  }
+
+  &__link:hover {
     color: #f50057 !important;
   }
 

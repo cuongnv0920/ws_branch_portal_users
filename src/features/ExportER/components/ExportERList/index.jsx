@@ -254,7 +254,7 @@ function ExportERList(props) {
           <div className="contentExportER__notification">
             <h5>
               <u>Lưu ý:</u> Bảng thông báo tỷ giá chỉ mang tính chất tham khảo.
-              Tỷ giá giao dịch phụ thuộc thời điểm giao dịch thực tế tại Chi
+              Tỷ giá giao dịch phụ thuộc vào thời điểm giao dịch thực tế tại Chi
               nhánh.
             </h5>
             <h5>
