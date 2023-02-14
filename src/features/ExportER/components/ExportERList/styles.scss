@@ -1,4 +1,12 @@
-.contentDetail {
+.breadcrumbsExportER {
+  &__button {
+    color: #f50057 !important;
+    font-size: 1rem !important;
+    text-decoration: none !important;
+  }
+}
+
+.contentExportER {
   background-color: #fff;
   margin-top: 15px;
   padding: 20px 16px;
@@ -8,17 +16,39 @@
     text-align: center;
   }
 
-  &__title h4 {
+  &__title h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.3rem;
+  }
+
+  &__title h5 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 500;
   }
 
   &__text {
     padding: 18px 0px;
   }
+
+  &__notification h5 {
+    margin: 0;
+    line-height: 1.8;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  &__notification h4 {
+    margin: 0;
+    padding: 16px 32px 0px 0px;
+    line-height: 1.8;
+    font-size: 1rem;
+    font-weight: 600;
+  }
 }
 
-.labelDetail {
+.labelExportER {
   &__left {
     display: flex;
   }
@@ -26,7 +56,6 @@
   &__logo {
     margin-right: 10px;
   }
-
   &__logo img {
     width: 80px;
   }
@@ -53,22 +82,4 @@
     font-size: 0.7rem;
     font-weight: 400;
   }
-}
-
-.notificationDetail {
-  display: flex;
-  background-color: #fff;
-  padding: 8px 0px;
-
-  &__content {
-    margin: 0;
-    margin: 8px 16px;
-    font-size: 0.8rem;
-  }
-}
-
-.commentDetail,
-.CommentListDetail {
-  background-color: #fff;
-  padding: 20px 16px;
 }

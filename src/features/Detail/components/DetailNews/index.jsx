@@ -32,6 +32,7 @@ function DetailNews(props) {
   const { loading, news } = useNewsDetail(pathname);
   const logged = useSelector((state) => state.auth.current);
   const isLogged = !!logged._id;
+  const date = new Date();
 
   const handleRefeshCommentList = () => {
     setRefeshCommnetList(refeshCommnetList + 1);
@@ -88,13 +89,20 @@ function DetailNews(props) {
             <div className="labelDetail__text">
               <h4>NGÂN HÀNG TMCP ĐẦU TƯ</h4>
               <h4>VÀ PHÁT TRIỂN VIỆT NAM</h4>
-              <h4>{branch.name}</h4>
+              <p>--------------------</p>
+              <h5>{branch.name}</h5>
             </div>
           </Grid>
           <Grid item md={6} xs={12} sm={12} className="labelDetail__right">
             <div className="labelDetail__text">
               <h4>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h4>
               <h4>Độc lập - Tự do - Hạnh phúc</h4>
+              <p>--------------------</p>
+              <h5
+                style={{ fontStyle: "italic" }}
+              >{`TP.HCM, ngày ${date.getDate()} tháng ${
+                date.getDay() + 1
+              } năm ${date.getFullYear()}`}</h5>
             </div>
           </Grid>
         </Grid>

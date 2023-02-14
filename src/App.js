@@ -12,6 +12,7 @@ import Deposit from "components/common/Deposit";
 import Footer from "components/common/Footer";
 import Contact from "features/Contact";
 import Detail from "features/Detail";
+import ExportER from "features/ExportER";
 import News from "features/News";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
@@ -69,6 +70,11 @@ function App() {
     {
       path: "/contact",
       element: <Contact />,
+      role: "user",
+    },
+    {
+      path: "/exportER",
+      element: <ExportER />,
       role: "user",
     },
   ];

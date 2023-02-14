@@ -1,6 +1,5 @@
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import {
-  IconButton,
+  Link,
   Table,
   TableBody,
   TableCell,
@@ -10,9 +9,9 @@ import {
 } from "@mui/material";
 import { exchangeRateApi, marginApi } from "api";
 import api from "configs/api.conf";
-import { jsPDF } from "jspdf";
+import location from "configs/location.conf";
 import { useEffect, useState } from "react";
-import Times from "../../../fonts/times.ttf";
+import PrintIcon from "@mui/icons-material/Print";
 import "./styles.scss";
 
 ExchangeRate.propTypes = {};
@@ -20,16 +19,6 @@ ExchangeRate.propTypes = {};
 export function ExchangeRate(props) {
   const [exchangeRates, setExchangeRates] = useState([]);
   const [margins, setMarrgins] = useState([]);
-
-  const handleExportPDF = async () => {
-    const doc = new jsPDF("portrait", "pt", "a4");
-    doc.addFont(Times, "Times", "normal");
-    doc.setFont("Times");
-    const data = await document.querySelector(".exchangeRate");
-    doc.html(data).then(() => {
-      doc.save("tygia.pdf");
-    });
-  };
 
   useEffect(() => {
     const fetchExchangeRates = async () => {
@@ -71,20 +60,20 @@ export function ExchangeRate(props) {
     <div className="exchangeRate">
       <div className="exchangeRate__header">
         <h3 className="exchangeRate__title">Tỷ giá ngoại tệ</h3>
-        <IconButton
-          onClick={handleExportPDF}
-          title="Xuất file PDF"
-          className="exchangeRate__iconButton"
+        <Link
+          href={`${location.userLocation}/exportER`}
+          className="exchangeRate__link"
+          title="Tạo bản in"
         >
-          <FileDownloadIcon className="exchangeRate__icon" />
-        </IconButton>
+          <PrintIcon />
+        </Link>
       </div>
 
       {exchangeRates.map(
         (exchangeRate, index) =>
           index === 0 && (
             <h5 className="exchangeRate__notification">
-              {`(Thời điểm thông báo: ${exchangeRate.notificationHourd} - ${exchangeRate.notificationDate} - Lần thống báo thứ: ${exchangeRate.notificationNumber})`}
+              {`(Thời điểm thông báo: ${exchangeRate.notificationHourd} - ${exchangeRate.notificationDate} - Lần thông báo thứ: ${exchangeRate.notificationNumber})`}
             </h5>
           )
       )}
