@@ -1,15 +1,11 @@
 export function showBirthday(data) {
-  const today = new Date();
+  const date = new Date();
+  const birthday = data.filter((user) => {
+    const day = new Date(user?.birthday).getDate() === date.getDate();
+    const month = new Date(user?.birthday).getMonth() === date.getMonth();
 
-  const dayBirthday = data.filter(
-    (user) => new Date(user?.birthday).getDate() === today.getDate()
-  );
+    return day && month;
+  });
 
-  const monthBirthday = data.filter(
-    (user) => new Date(user?.birthday).getMonth() === today.getDate()
-  );
-
-  if (dayBirthday && monthBirthday) {
-    return dayBirthday;
-  }
+  return birthday;
 }

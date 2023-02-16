@@ -6,7 +6,6 @@ import {
   Grid,
   MenuItem,
   Radio,
-  Typography,
 } from "@mui/material";
 import { levelApi, roomApi } from "api";
 import {
@@ -101,11 +100,6 @@ function RegisterForm(props) {
 
   return (
     <div className="register">
-      <div className="register__title dialogTitle">
-        <Typography className="dialogTitle_content">
-          Đăng ký người dùng
-        </Typography>
-      </div>
       <form onSubmit={form.handleSubmit(handleSubmit)}>
         <InputField name="fullName" label="Họ và tên" form={form} />
         <InputField name="email" label="Email" form={form} />

@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, CircularProgress, Typography } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import { InputField, PasswordField } from "components/inputField";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
@@ -35,10 +35,6 @@ function LoginForm(props) {
 
   return (
     <div className="login">
-      <div className="login__title dialogTitle">
-        <Typography className="dialogTitle_content">Đăng nhập</Typography>
-      </div>
-
       <form onSubmit={form.handleSubmit(handleSubmit)}>
         <InputField name="username" label="Tên đăng nhập" form={form} />
         <PasswordField name="password" label="Mật khẩu" form={form} />
