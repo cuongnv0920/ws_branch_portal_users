@@ -98,10 +98,10 @@ function DetailNews(props) {
               <h4>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h4>
               <h4>Độc lập - Tự do - Hạnh phúc</h4>
               <p>--------------------</p>
-              <h5
-                style={{ fontStyle: "italic" }}
-              >{`TP.HCM, ngày ${date.getDate()} tháng ${
-                date.getDay() + 1
+              <h5 style={{ fontStyle: "italic" }}>{`${
+                branch.location
+              }, ngày ${date.getDate()} tháng ${
+                date.getMonth() + 1
               } năm ${date.getFullYear()}`}</h5>
             </div>
           </Grid>
