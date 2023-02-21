@@ -34,7 +34,7 @@ export function Header(props) {
   const isLogged = !!logged._id;
 
   const [openAuth, setOpenAuth] = useState(false);
-  const [openSetting, setOpenSetting] = useState(false);
+  const [openSettingUser, setOpenSettingUser] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const dispatch = useDispatch();
@@ -42,26 +42,31 @@ export function Header(props) {
   const handleOpenAuth = () => {
     setOpenAuth(true);
   };
+
   const handleCloseAuth = () => {
     setOpenAuth(false);
   };
 
-  const handleCloseSetting = () => {
-    setOpenSetting(false);
+  const handleCloseSettingUser = () => {
+    setOpenSettingUser(false);
+  };
+
+  const handleOpenSettingUser = () => {
+    setOpenSettingUser(true);
+    setAnchorEl(null);
   };
 
   const handleOpenMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleCloseMenu = () => {
     setAnchorEl(null);
-
-    setOpenSetting(true);
   };
+
   const handleLogout = () => {
     const action = logout();
     dispatch(action);
-
     setAnchorEl(null);
   };
 
@@ -134,7 +139,7 @@ export function Header(props) {
                 open={Boolean(anchorEl)}
                 onClose={handleCloseMenu}
               >
-                <MenuItem onClick={handleCloseMenu}>
+                <MenuItem onClick={handleOpenSettingUser}>
                   <ListItemIcon>
                     <Settings sx={{ color: "#00a152" }} fontSize="small" />
                   </ListItemIcon>
@@ -187,18 +192,21 @@ export function Header(props) {
       <Dialog
         fullWidth="xs"
         maxWidth="xs"
-        open={openSetting}
+        open={openSettingUser}
         onClose={(event, reason) => {
           if (reason !== "backdropClick") {
-            handleCloseSetting(event, reason);
+            handleCloseSettingUser(event, reason);
           }
         }}
       >
         <DialogContent>
-          <Setting closeDialog={handleCloseSetting} />
+          <Setting closeDialog={handleCloseSettingUser} />
         </DialogContent>
         <DialogActions className="dialogAction">
-          <Button className="dialogButtonCancel" onClick={handleCloseSetting}>
+          <Button
+            className="dialogButtonCancel"
+            onClick={handleCloseSettingUser}
+          >
             Thoát
           </Button>
         </DialogActions>
