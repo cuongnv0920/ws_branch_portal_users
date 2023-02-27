@@ -76,7 +76,7 @@ function DetailNews(props) {
           Trang chủ
         </Link>
         <Link underline="hover" color="text.primary">
-          {news.category.name}
+          {news.category?.name}
         </Link>
       </Breadcrumbs>
 
@@ -111,7 +111,9 @@ function DetailNews(props) {
           <h4>{news.title}</h4>
         </div>
 
-        <div className="contentDetail__text">{parse(news.content)}</div>
+        <div className="contentDetail__text">
+          {news.content ? parse(news.content) : ""}
+        </div>
 
         {news.command && (
           <div className="contentDetail__command">
