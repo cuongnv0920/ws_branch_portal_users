@@ -1,7 +1,8 @@
 const branch = {
-  name: "CN Sài Gòn",
-  address: "271 An Dương Vương, Phường 3, Quận 5, TP.Hồ Chí Minh",
-  phone: "028 - 38550330",
+  name: "CN Quận 7 Sài Gòn",
+  address:
+    "Số 38-40-42 Đường Nguyễn Thị Thập, Khu Dân Cư Him Lam, Phường Tân Hưng, Quận 7, TP.Hồ Chí Minh",
+  phone: "028 - ",
   location: "TP.HCM",
 };
 

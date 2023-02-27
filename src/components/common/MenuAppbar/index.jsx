@@ -4,7 +4,6 @@ import {
   Button,
   Divider,
   Link,
-  List,
   ListItem,
   ListItemButton,
   Menu,
@@ -206,15 +205,13 @@ export function MenuAppbar(props) {
               onClose={handleCloseLinkMenu}
             >
               {links.map((link, index) => (
-                <List>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <Link href={link.url} target="_blank">
-                        {link.name}
-                      </Link>
-                    </ListItemButton>
-                  </ListItem>
-                </List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <Link href={link.url} target="_blank">
+                      {link.name}
+                    </Link>
+                  </ListItemButton>
+                </ListItem>
               ))}
             </Menu>
 
