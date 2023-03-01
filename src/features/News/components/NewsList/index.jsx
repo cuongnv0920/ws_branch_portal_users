@@ -140,7 +140,7 @@ function NewsList(props) {
               <p className="notification__content">
                 <Moment format="DD/MM/YYYY">{news.createdAt}</Moment>
               </p>
-              {showType(news.createdAt) <= 2 && (
+              {showType(news.createdAt) === true && (
                 <>
                   <Divider orientation="vertical" flexItem />
                   <p className="notification__content">

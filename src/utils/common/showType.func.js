@@ -1,17 +1,14 @@
 export function showType(createdAt) {
-  const today = new Date();
-  const day = today.getDate();
-  const month = today.getMonth() + 1;
-  const year = today.getFullYear();
-
+  const date = new Date();
   const created = new Date(createdAt);
-  const dayCreate = created.getDate();
-  const monthCreate = created.getMonth();
-  const yearCreate = created.getFullYear();
 
-  if (month === monthCreate || year === yearCreate) {
-    return day - dayCreate;
+  if (
+    date.getDate() + 1 === created.getDate() &&
+    date.getMonth() === created.getMonth() &&
+    date.getFullYear() === created.getFullYear()
+  ) {
+    return true;
   } else {
-    return 3;
+    return false;
   }
 }
