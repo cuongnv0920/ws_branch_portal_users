@@ -286,7 +286,7 @@ function FeaturedNews(props) {
                     <Moment format="DD/MM/YYYY">{row.createdAt}</Moment>
                   </p>
 
-                  {showType(row.createdAt) <= 2 && (
+                  {showType(row.createdAt) === true && (
                     <>
                       <Divider orientation="vertical" flexItem />
                       <p className="notification__content">
