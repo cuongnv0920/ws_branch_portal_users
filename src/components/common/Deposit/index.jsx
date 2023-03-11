@@ -36,17 +36,17 @@ function Deposit(props) {
   return (
     <div className="deposit">
       <h3 className="deposit__title">Lãi suất tiền gửi</h3>
-      <h5 className="deposit__notification">
-        <span>Ngày hiệu lực: </span>
-        {deposits.map(
-          (deposit, index) =>
-            index === 0 && (
-              <Moment style={{ color: "#f50057" }} format="DD/MM/YYYY">
-                {deposit.effect}
-              </Moment>
-            )
-        )}
-      </h5>
+      <div className="deposit__notification notificationDeposit">
+        <h5 className="notificationDeposit__content">
+          <span>Ngày hiệu lực: </span>
+          {deposits.map(
+            (deposit, index) =>
+              index === 0 && (
+                <Moment format="DD/MM/YYYY">{deposit.effect}</Moment>
+              )
+          )}
+        </h5>
+      </div>
       <TableContainer sx={{ maxHeight: 535 }}>
         <Table stickyHeader className="deposit__table table">
           <TableHead className="table__head head">

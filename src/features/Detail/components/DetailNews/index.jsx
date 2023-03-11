@@ -14,9 +14,9 @@ import branch from "configs/branch.conf";
 import useNewsDetail from "features/Detail/hooks/useNewsDetail";
 import parse from "html-react-parser";
 import { useEffect, useState } from "react";
-import Moment from "react-moment";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { showFile } from "utils";
 import logo from "../../../../images/logo-header.png";
 import CommentList from "../CommentList";
 import Create from "../Create";
@@ -32,7 +32,7 @@ function DetailNews(props) {
   const { loading, news } = useNewsDetail(pathname);
   const logged = useSelector((state) => state.auth.current);
   const isLogged = !!logged._id;
-  const date = new Date();
+  const date = new Date(news.createdAt);
 
   const handleRefeshCommentList = () => {
     setRefeshCommnetList(refeshCommnetList + 1);
@@ -134,39 +134,37 @@ function DetailNews(props) {
       <div className="detail__notification notificationDetail">
         {news.file_1 && (
           <>
-            <p className="notificationDetail__content">
-              <a
-                href={api.URL + "/" + news.file_1}
-                className="featured-download"
-              >
-                Tải file
+            <div className="notificationDetail__content">
+              <a href={`${api.URL}/${news.file_1}`}>
+                <img
+                  src={`${api.URL}/images/${
+                    showFile(news.file_1).fileType
+                  }.png`}
+                  alt="file type icon"
+                />
+                <p>{showFile(news.file_1).fileName}</p>
               </a>
-            </p>
+            </div>
             <Divider orientation="vertical" flexItem />
           </>
         )}
 
         {news.file_2 && (
           <>
-            <p className="notificationDetail__content">
-              <a
-                href={api.URL + "/" + news.file_2}
-                className="featured-download"
-              >
-                Tải file
+            <div className="notificationDetail__content">
+              <a href={`${api.URL}/${news.file_2}`}>
+                <img
+                  src={`${api.URL}/images/${
+                    showFile(news.file_2).fileType
+                  }.png`}
+                  alt="file type icon"
+                />
+                <p>{showFile(news.file_2).fileName}</p>
               </a>
-            </p>
+            </div>
             <Divider orientation="vertical" flexItem />
           </>
         )}
-
-        <p className="notificationDetail__content">{`${news.countComment} Bình luận`}</p>
-        <Divider orientation="vertical" flexItem />
-
-        <p className="notificationDetail__content">
-          <Moment format="DD/MM/YYYY">{news.createdAt}</Moment>
-        </p>
-        <Divider orientation="vertical" flexItem />
       </div>
 
       <Divider flexItem />

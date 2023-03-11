@@ -15,6 +15,22 @@
     font-weight: 600;
   }
 
+  &__filterResult {
+    position: relative;
+    padding-left: 24px;
+    color: #4a6572;
+  }
+
+  &__filterResult:before {
+    content: "";
+    width: calc(100% - 24px);
+    height: 2px;
+    background: #f9aa33;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
   &__iconAdd {
     color: #f50057 !important;
   }
@@ -51,9 +67,12 @@
   &__title a {
     margin: 0;
     font-size: 1rem;
-    white-space: nowrap;
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     text-overflow: ellipsis;
+    word-break: break-word;
     font-weight: 600;
   }
 }
@@ -71,6 +90,8 @@
   }
 
   &__buttonAction {
+    width: 26px;
+    height: 26px;
     background-color: rgba(0, 0, 0, 0.08) !important;
   }
 }
