@@ -11,6 +11,7 @@
     text-transform: uppercase;
     font-size: 1.5rem;
     flex-grow: 1;
+    color: #1c2e36;
   }
 
   &__link {
@@ -23,14 +24,31 @@
   &__link:hover {
     color: #f50057 !important;
   }
+}
+.notificationExchangeRate {
+  margin: 0 0 0 -12px;
+  padding: 8px 0;
+  background-color: #f8d376;
+  position: relative;
 
-  &__notification {
+  &__content {
     margin: 0;
-    padding: 0px 0px 8px 0px;
     text-align: center;
     font-style: italic;
     font-weight: 500;
     font-size: 0.8rem;
+  }
+
+  &__content:after {
+    content: "";
+    height: 0;
+    width: 0;
+    display: block;
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    border-top: 12px solid #daa520;
+    border-left: 12px solid transparent;
   }
 }
 .head {

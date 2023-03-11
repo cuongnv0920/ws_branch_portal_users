@@ -173,7 +173,12 @@ function FeaturedNews(props) {
       ) : (
         <>
           <div className="featuredNews__title title-news">
-            <h4>{title}</h4>
+            <h4>
+              <span>{title}</span>
+              <span className="featuredNews__filterResult">
+                {featuredNews.length}
+              </span>
+            </h4>
             {isLoggedAdmin() && (
               <Chip
                 className="news__chip"
@@ -240,34 +245,6 @@ function FeaturedNews(props) {
                 </div>
 
                 <div className="content__notification notification">
-                  {row.file_1 && (
-                    <>
-                      <p className="notification__content">
-                        <a
-                          className="featured-download"
-                          href={api.URL + "/" + row?.file_1}
-                        >
-                          Tải file
-                        </a>
-                      </p>
-                      <Divider orientation="vertical" flexItem />
-                    </>
-                  )}
-
-                  {row.file_2 && (
-                    <>
-                      <p className="notification__content">
-                        <a
-                          className="featured-download"
-                          href={api.URL + "/" + row?.file_2}
-                        >
-                          Tải file
-                        </a>
-                      </p>
-                      <Divider orientation="vertical" flexItem />
-                    </>
-                  )}
-
                   {row.code && (
                     <>
                       <p className="notification__content">
@@ -276,6 +253,9 @@ function FeaturedNews(props) {
                       <Divider orientation="vertical" flexItem />
                     </>
                   )}
+
+                  <p className="notification__content">{`${row.view} Lượt xem`}</p>
+                  <Divider orientation="vertical" flexItem />
 
                   <p className="notification__content">
                     {`${row.countComment} Bình luận`}

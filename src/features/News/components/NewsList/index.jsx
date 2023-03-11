@@ -41,7 +41,10 @@ function NewsList(props) {
   return (
     <>
       <div className="news__title title-news">
-        <h4>{title}</h4>
+        <h4>
+          <span>{title}</span>
+          <span className="featuredNews__filterResult">{data.length}</span>
+        </h4>
         {isLoggedAdmin() && (
           <Chip
             className="news__chip"
@@ -96,33 +99,6 @@ function NewsList(props) {
             </div>
 
             <div className="content__notification notification">
-              {news.file_1 && (
-                <>
-                  <p className="notification__content">
-                    <a
-                      className="news-download"
-                      href={api.URL + "/" + news.file_1}
-                    >
-                      Tải file
-                    </a>
-                  </p>
-                  <Divider orientation="vertical" flexItem />
-                </>
-              )}
-              {news.file_2 && (
-                <>
-                  <p className="notification__content">
-                    <a
-                      className="news-download"
-                      href={api.URL + "/" + news.file_2}
-                    >
-                      Tải file
-                    </a>
-                  </p>
-                  <Divider orientation="vertical" flexItem />
-                </>
-              )}
-
               {news.code && (
                 <>
                   <p className="notification__content">
@@ -131,6 +107,9 @@ function NewsList(props) {
                   <Divider orientation="vertical" flexItem />
                 </>
               )}
+
+              <p className="notification__content">{`${news.view} Lượt xem`}</p>
+              <Divider orientation="vertical" flexItem />
 
               <p className="notification__content">
                 {`${news.countComment} Bình luận`}

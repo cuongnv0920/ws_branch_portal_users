@@ -158,16 +158,14 @@ a {
 .detail-featuredNews {
   flex-grow: 1;
 }
-.detail-featuredNews:hover,
-.featured-download:hover {
+.detail-featuredNews:hover {
   color: #f50057 !important;
 }
 
 .detail-news {
   flex-grow: 1;
 }
-.detail-news:hover,
-.news-download:hover {
+.detail-news:hover {
   color: #00a152 !important;
 }
 

@@ -69,14 +69,16 @@ export function ExchangeRate(props) {
         </Link>
       </div>
 
-      {exchangeRates.map(
-        (exchangeRate, index) =>
-          index === 0 && (
-            <h5 className="exchangeRate__notification">
-              {`(Thời điểm thông báo: ${exchangeRate.notificationHourd} - ${exchangeRate.notificationDate} - Lần thông báo thứ: ${exchangeRate.notificationNumber})`}
-            </h5>
-          )
-      )}
+      <div className="exchangeRate__notification notificationExchangeRate">
+        {exchangeRates.map(
+          (exchangeRate, index) =>
+            index === 0 && (
+              <h5 className="notificationExchangeRate__content">
+                {`(Thời điểm thông báo: ${exchangeRate.notificationHourd} - ${exchangeRate.notificationDate} - Lần thông báo thứ: ${exchangeRate.notificationNumber})`}
+              </h5>
+            )
+        )}
+      </div>
 
       <TableContainer sx={{ maxHeight: 535 }}>
         <Table stickyHeader className="exchangeRate__table table">
