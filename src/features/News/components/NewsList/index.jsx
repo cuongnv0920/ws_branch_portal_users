@@ -7,7 +7,7 @@ import api from "configs/api.conf";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
 import { useSelector } from "react-redux";
-import { showType } from "utils";
+import { showTitleNews, showType } from "utils";
 import "./styles.scss";
 
 NewsList.propTypes = {
@@ -41,10 +41,8 @@ function NewsList(props) {
   return (
     <>
       <div className="news__title title-news">
-        <h4>
-          <span>{title}</span>
-          <span className="featuredNews__filterResult">{data.length}</span>
-        </h4>
+        <h4>{showTitleNews(title, data)}</h4>
+
         {isLoggedAdmin() && (
           <Chip
             className="news__chip"

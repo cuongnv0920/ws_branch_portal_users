@@ -7,6 +7,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  Divider,
   Grid,
   Link,
   List,
@@ -62,75 +63,102 @@ function ContactList(props) {
       </Breadcrumbs>
 
       <div className="contact__content contentContact">
-        <Grid container spacing={1}>
-          <Grid item md={7} sm={7} xs={7} lg={7}>
-            <ContactFilter filters={filters} onChange={handleFiltersChange} />
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={9} sm={12}>
+            <Grid container spacing={3}>
+              <Grid item md={7} sm={7} xs={7} lg={7}>
+                <ContactFilter
+                  filters={filters}
+                  onChange={handleFiltersChange}
+                />
+              </Grid>
+              <Grid item md={5} sm={5} xs={5} lg={5}>
+                <List
+                  component="nav"
+                  subheader={
+                    <ListSubheader className="contact-title" component="nav">
+                      Danh bạ
+                    </ListSubheader>
+                  }
+                >
+                  {loading ? (
+                    <SkeletonContact />
+                  ) : (
+                    <div className="containerContact">
+                      {contacts
+                        .sort((a, b) => a.level.sort - b.level.sort)
+                        .map((contact) => (
+                          <Card className="cardContact">
+                            <CardActions className="cardContact__action">
+                              <h5>{`Chức danh: ${contact.level.name}`}</h5>
+                            </CardActions>
+                            <Divider />
+                            <CardContent className="cardContact__content">
+                              <ListItem className="cardContact__listItem">
+                                <ListItemIcon className="cardContact__listIcon">
+                                  <Person2OutlinedIcon />
+                                </ListItemIcon>
+                                <ListItemText
+                                  className="cardContact__listText"
+                                  primary={contact.fullName}
+                                />
+                              </ListItem>
+
+                              <ListItem className="cardContact__listItem">
+                                <ListItemIcon className="cardContact__listIcon">
+                                  <EmailOutlinedIcon />
+                                </ListItemIcon>
+                                <ListItemText
+                                  className="cardContact__listText"
+                                  primary={contact.email}
+                                />
+                              </ListItem>
+
+                              <ListItem className="cardContact__listItem">
+                                <ListItemIcon className="cardContact__listIcon">
+                                  <PhoneAndroidOutlinedIcon />
+                                </ListItemIcon>
+                                <ListItemText
+                                  className="cardContact__listText"
+                                  primary={contact.phone}
+                                />
+                              </ListItem>
+
+                              <ListItem className="cardContact__listItem">
+                                <ListItemIcon className="cardContact__listIcon">
+                                  <LocalPhoneOutlinedIcon />
+                                </ListItemIcon>
+                                <ListItemText
+                                  className="cardContact__listText"
+                                  primary={contact.ext}
+                                />
+                              </ListItem>
+                            </CardContent>
+                          </Card>
+                        ))}
+                    </div>
+                  )}
+                </List>
+              </Grid>
+            </Grid>
           </Grid>
-
-          <Grid item md={5} sm={5} xs={5} lg={5}>
-            <List
-              component="nav"
-              subheader={
-                <ListSubheader className="roomList__title" component="nav">
-                  Danh bạ
-                </ListSubheader>
-              }
-            >
-              {loading ? (
-                <SkeletonContact />
-              ) : (
-                <div className="containerContact">
-                  {contacts
-                    .sort((a, b) => a.level.sort - b.level.sort)
-                    .map((contact) => (
-                      <Card className="cardContact">
-                        <CardContent className="cardContact__content">
-                          <ListItem className="cardContact__listItem">
-                            <ListItemIcon className="cardContact__listIcon">
-                              <Person2OutlinedIcon />
-                            </ListItemIcon>
-                            <ListItemText
-                              className="cardContact__listText"
-                              primary={contact.fullName}
-                            />
-                          </ListItem>
-
-                          <ListItem className="cardContact__listItem">
-                            <ListItemIcon className="cardContact__listIcon">
-                              <EmailOutlinedIcon />
-                            </ListItemIcon>
-                            <ListItemText
-                              className="cardContact__listText"
-                              primary={contact.email}
-                            />
-                          </ListItem>
-
-                          <ListItem className="cardContact__listItem">
-                            <ListItemIcon className="cardContact__listIcon">
-                              <PhoneAndroidOutlinedIcon />
-                            </ListItemIcon>
-                            <ListItemText
-                              className="cardContact__listText"
-                              primary={contact.phone}
-                            />
-                          </ListItem>
-                          <ListItem className="cardContact__listItem">
-                            <ListItemIcon className="cardContact__listIcon">
-                              <LocalPhoneOutlinedIcon />
-                            </ListItemIcon>
-                            <ListItemText
-                              className="cardContact__listText"
-                              primary={contact.ext}
-                            />
-                          </ListItem>
-                        </CardContent>
-                        <CardActions className="cardContact__action">
-                          <h5>{`Chức danh: ${contact.level.name}`}</h5>
-                        </CardActions>
-                      </Card>
-                    ))}
-                </div>
-              )}
+          <Grid item xs={12} md={3} sm={12}>
+            <div className="infoContact">
+              <div className="infoContact__title">
+                <h5>Thông tin Phòng/ Ban</h5>
+              </div>
+            </div>
+            <List className="infoContact__list">
+              <ListItem className="infoContact__listItem">
+                <ListItemText
+                  className="infoContact__listItemText"
+                  primary="Tổng số cán bộ:"
+                />
+                <ListItemText
+                  className="infoContact__listItemText"
+                  primary={contacts.length}
+                />
+              </ListItem>
             </List>
           </Grid>
         </Grid>

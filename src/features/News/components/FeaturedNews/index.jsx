@@ -20,7 +20,7 @@ import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import Moment from "react-moment";
 import { useDispatch, useSelector } from "react-redux";
-import { showType } from "utils";
+import { showTitleNews, showType } from "utils";
 import CreateFeaturedNews from "../CreateFeaturedNews";
 import Delete from "../Delete";
 import Edit from "../Edit";
@@ -173,12 +173,8 @@ function FeaturedNews(props) {
       ) : (
         <>
           <div className="featuredNews__title title-news">
-            <h4>
-              <span>{title}</span>
-              <span className="featuredNews__filterResult">
-                {featuredNews.length}
-              </span>
-            </h4>
+            <h4>{showTitleNews(title, featuredNews)}</h4>
+
             {isLoggedAdmin() && (
               <Chip
                 className="news__chip"

@@ -26,9 +26,10 @@
   }
 }
 .notificationExchangeRate {
+  min-height: 16px;
   margin: 0 0 0 -12px;
   padding: 8px 0;
-  background-color: #f8d376;
+  background-color: #f50057;
   position: relative;
 
   &__content {
@@ -47,7 +48,7 @@
     position: absolute;
     bottom: -12px;
     left: 0;
-    border-top: 12px solid #daa520;
+    border-top: 12px solid #980236;
     border-left: 12px solid transparent;
   }
 }

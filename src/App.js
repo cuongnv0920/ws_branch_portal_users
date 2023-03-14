@@ -4,11 +4,8 @@ import {
   DialogActions,
   DialogContent,
   Divider,
-  Grid,
-  Paper,
 } from "@mui/material";
 import { Box, Container } from "@mui/system";
-import Deposit from "components/common/Deposit";
 import Footer from "components/common/Footer";
 import Contact from "features/Contact";
 import Detail from "features/Detail";
@@ -18,12 +15,7 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { userApi } from "./api";
-import {
-  Birthday,
-  ExchangeRate,
-  Header,
-  MenuAppbar,
-} from "./components/common";
+import { Birthday, Header, MenuAppbar } from "./components/common";
 import { showBirthday } from "./utils";
 
 function App() {
@@ -98,27 +90,11 @@ function App() {
       <MenuAppbar />
       <Box className="main">
         <Container sx={{ minHeight: "100vh" }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={7} sm={12}>
-              <Routes>
-                {routes.map((route, index) => (
-                  <Route
-                    key={index}
-                    path={route.path}
-                    element={route.element}
-                  />
-                ))}
-              </Routes>
-            </Grid>
-            <Grid item xs={12} md={5} sm={12}>
-              <Paper>
-                <ExchangeRate />
-              </Paper>
-              <Paper sx={{ marginTop: "35px" }}>
-                <Deposit />
-              </Paper>
-            </Grid>
-          </Grid>
+          <Routes>
+            {routes.map((route, index) => (
+              <Route key={index} path={route.path} element={route.element} />
+            ))}
+          </Routes>
         </Container>
       </Box>
 

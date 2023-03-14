@@ -47,7 +47,7 @@ function Deposit(props) {
           )}
         </h5>
       </div>
-      <TableContainer sx={{ maxHeight: 535 }}>
+      <TableContainer sx={{ maxHeight: 570 }}>
         <Table stickyHeader className="deposit__table table">
           <TableHead className="table__head head">
             <TableRow className="head__row">

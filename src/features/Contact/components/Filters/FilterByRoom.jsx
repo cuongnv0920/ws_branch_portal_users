@@ -41,7 +41,7 @@ function FilterByRoom(props) {
       <List
         component="nav"
         subheader={
-          <ListSubheader className="roomList__title" component="nav">
+          <ListSubheader className="contact-title" component="nav">
             Danh sách Phòng/ Ban
           </ListSubheader>
         }
