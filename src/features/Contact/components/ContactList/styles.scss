@@ -1,17 +1,24 @@
+.contact-title {
+  font-family: "Muli", sans-serif !important;
+  font-size: 1rem !important;
+}
+
 .contentContact {
-  padding: 20px 16px;
+  margin: 20px 0px;
 }
 
 .containerContact {
-  height: 150vh;
+  margin-top: 16px;
+  height: 100vh;
   overflow: auto;
 }
 
 .cardContact {
-  margin-top: 16px;
-  background-color: #fff;
+  background-color: #f8f8f8;
+  margin-bottom: 16px;
+
   &__content {
-    padding: 6px !important;
+    padding: 8px 16px !important;
   }
 
   &__listItem {
@@ -31,7 +38,37 @@
     font-size: 0.9rem;
   }
 
+  &__action {
+    margin: 6px 8px;
+  }
+
   &__action h5 {
     margin: 0;
+  }
+}
+
+.infoContact {
+  &__title h5 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  &__list {
+    min-height: 195px;
+    margin-top: 16px !important;
+    border: 2px dotted #f50057;
+    border-top: 0;
+    border-right: 0;
+    border-radius: 0 0 0 30px;
+  }
+
+  &__listItemText span {
+    font-family: "Muli", sans-serif !important;
+  }
+
+  &__listItemText span img {
+    width: 35px;
   }
 }

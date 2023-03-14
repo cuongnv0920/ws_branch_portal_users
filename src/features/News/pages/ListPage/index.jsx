@@ -1,12 +1,17 @@
 import {
+  Box,
   Button,
   Dialog,
   DialogActions,
   DialogContent,
+  Grid,
   Pagination,
+  Paper,
   Stack,
 } from "@mui/material";
 import { newsApi } from "api";
+import { ExchangeRate } from "components/common";
+import Deposit from "components/common/Deposit";
 import { getEdit, removeGetEdit } from "features/News/newsClice";
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
@@ -154,102 +159,118 @@ function News(props) {
   }, [filters]);
 
   return (
-    <div>
-      <FeaturedNews />
-      <div className="news">
-        {loading ? (
-          <SkeletonNews title="Thông tin chung" length={8} />
-        ) : (
-          <>
-            <NewsList
-              title={title}
-              data={news}
-              onClickOpenDialogCreate={handleOpenDialogCreate}
-              onClickOpenDialogEdit={handleOpenDialogEdit}
-              onClickOpenDialogDelete={handleOpenDialogDelete}
-            />
-          </>
-        )}
+    <Box>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={7} sm={12}>
+          {/* Thông tin nổi bật */}
+          <FeaturedNews />
 
-        <Stack spacing={2} className="news__pagination">
-          <Pagination
-            count={pagination.count}
-            variant="outlined"
-            color="primary"
-            page={pagination.page}
-            onChange={handlePageChande}
-          />
-        </Stack>
+          {/* Thông tin chung */}
+          <div className="news">
+            {loading ? (
+              <SkeletonNews title="Thông tin chung" length={8} />
+            ) : (
+              <>
+                <NewsList
+                  title={title}
+                  data={news}
+                  onClickOpenDialogCreate={handleOpenDialogCreate}
+                  onClickOpenDialogEdit={handleOpenDialogEdit}
+                  onClickOpenDialogDelete={handleOpenDialogDelete}
+                />
+              </>
+            )}
 
-        <Dialog
-          fullWidth="md"
-          maxWidth="md"
-          open={openDialogCreate}
-          onClose={(event, reason) => {
-            if (reason !== "backdropClick") {
-              handleCloseDialogCreate(event, reason);
-            }
-          }}
-        >
-          <DialogContent>
-            <CreateNews closeDialog={handleCloseDialogCreate} />
-          </DialogContent>
-          <DialogActions className="dialogAction">
-            <Button
-              className="dialogButtonCancel"
-              onClick={handleCloseDialogCreate}
+            <Stack spacing={2} className="news__pagination">
+              <Pagination
+                count={pagination.count}
+                variant="outlined"
+                color="primary"
+                page={pagination.page}
+                onChange={handlePageChande}
+              />
+            </Stack>
+
+            <Dialog
+              fullWidth="md"
+              maxWidth="md"
+              open={openDialogCreate}
+              onClose={(event, reason) => {
+                if (reason !== "backdropClick") {
+                  handleCloseDialogCreate(event, reason);
+                }
+              }}
             >
-              Thoát
-            </Button>
-          </DialogActions>
-        </Dialog>
+              <DialogContent>
+                <CreateNews closeDialog={handleCloseDialogCreate} />
+              </DialogContent>
+              <DialogActions className="dialogAction">
+                <Button
+                  className="dialogButtonCancel"
+                  onClick={handleCloseDialogCreate}
+                >
+                  Thoát
+                </Button>
+              </DialogActions>
+            </Dialog>
 
-        <Dialog
-          fullWidth="md"
-          maxWidth="md"
-          open={openDialogEdit}
-          onClose={(event, reason) => {
-            if (reason !== "backdropClick") {
-              handleCloseDialogEdit(event, reason);
-            }
-          }}
-        >
-          <DialogContent>
-            <Edit closeDialog={handleCloseDialogEdit} />
-          </DialogContent>
-          <DialogActions className="dialogAction">
-            <Button
-              className="dialogButtonCancel"
-              onClick={handleCloseDialogEdit}
+            <Dialog
+              fullWidth="md"
+              maxWidth="md"
+              open={openDialogEdit}
+              onClose={(event, reason) => {
+                if (reason !== "backdropClick") {
+                  handleCloseDialogEdit(event, reason);
+                }
+              }}
             >
-              Thoát
-            </Button>
-          </DialogActions>
-        </Dialog>
+              <DialogContent>
+                <Edit closeDialog={handleCloseDialogEdit} />
+              </DialogContent>
+              <DialogActions className="dialogAction">
+                <Button
+                  className="dialogButtonCancel"
+                  onClick={handleCloseDialogEdit}
+                >
+                  Thoát
+                </Button>
+              </DialogActions>
+            </Dialog>
 
-        <Dialog
-          maxWidth="lg"
-          open={openDialogDelete}
-          onClose={(event, reason) => {
-            if (reason !== "backdropClick") {
-              handleCloseDialogDelete(event, reason);
-            }
-          }}
-        >
-          <DialogContent>
-            <Delete closeDialog={handleCloseDialogDelete} />
-          </DialogContent>
-          <DialogActions className="dialogAction">
-            <Button
-              className="dialogButtonCancel"
-              onClick={handleCloseDialogDelete}
+            <Dialog
+              maxWidth="lg"
+              open={openDialogDelete}
+              onClose={(event, reason) => {
+                if (reason !== "backdropClick") {
+                  handleCloseDialogDelete(event, reason);
+                }
+              }}
             >
-              Thoát
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
-    </div>
+              <DialogContent>
+                <Delete closeDialog={handleCloseDialogDelete} />
+              </DialogContent>
+              <DialogActions className="dialogAction">
+                <Button
+                  className="dialogButtonCancel"
+                  onClick={handleCloseDialogDelete}
+                >
+                  Thoát
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </div>
+        </Grid>
+
+        <Grid item xs={12} md={5} sm={12}>
+          <Paper>
+            <ExchangeRate />
+          </Paper>
+          <Paper sx={{ marginTop: "35px" }}>
+            <Deposit />
+          </Paper>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
 

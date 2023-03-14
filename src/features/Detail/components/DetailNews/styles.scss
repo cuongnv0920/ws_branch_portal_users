@@ -1,7 +1,7 @@
 .contentDetail {
   background-color: #fff;
   margin-top: 15px;
-  padding: 20px 16px;
+  padding: 32px;
 
   &__title {
     margin: 16px 0px;
@@ -10,7 +10,7 @@
 
   &__title h4 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   &__text {
@@ -24,11 +24,12 @@
   }
 
   &__logo {
-    margin-right: 10px;
+    margin-right: 26px;
   }
 
   &__logo img {
-    width: 80px;
+    width: 95px;
+    margin-top: 4px;
   }
 
   &__text {
@@ -38,13 +39,13 @@
   &__text h4 {
     margin: 0;
     line-height: 1.8;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   &__text h5 {
     margin: 0;
     line-height: 1.5;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 500;
   }
 
@@ -57,7 +58,7 @@
 
 .notificationDetail {
   background-color: #fff;
-  padding: 8px 0px;
+  padding: 8px 16px;
 
   &__content {
     margin: 0;
@@ -91,4 +92,32 @@
 .CommentListDetail {
   background-color: #fff;
   padding: 20px 16px;
+}
+
+.infoDetail {
+  padding: 10px 0px;
+
+  &__title h5 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  &__list {
+    min-height: 195px;
+    margin-top: 16px !important;
+    border: 2px dotted #f50057;
+    border-top: 0;
+    border-right: 0;
+    border-radius: 0 0 0 30px;
+  }
+
+  &__listItemText span {
+    font-family: "Muli", sans-serif !important;
+  }
+
+  &__listItemText span img {
+    width: 35px;
+  }
 }
